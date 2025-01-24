@@ -7,10 +7,17 @@ using UnityEngine.UI;
 public class OxygenBar : MonoBehaviour
 {
     private float _maxOxygen = 100;
-    private float _currentOxygen;
+    [SerializeField] private float _currentOxygen;
     [SerializeField] private Image _oxygenBarFill;
     [SerializeField] private bool _isDrowning;
     [SerializeField] private float _drowningSpeed;
+
+    [SerializeField] private float _invulnerabilityTime;
+    private float _invulnerabilityCD;
+
+    //Variables daño por contacto
+    private bool _inContactWithEnemy;
+    private float _damageInContact;
 
     public enum OxygenLevel
     {
@@ -24,10 +31,12 @@ public class OxygenBar : MonoBehaviour
     void Start()
     {
         _currentOxygen = _maxOxygen;
+        _invulnerabilityCD = 0;
+        _inContactWithEnemy = false;
         CheckOxygenLevel();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (_isDrowning)
@@ -36,6 +45,14 @@ public class OxygenBar : MonoBehaviour
             _currentOxygen = Mathf.Clamp(_currentOxygen, 0f, _maxOxygen);
             UpdateOxygen();
         }
+        if (_inContactWithEnemy)
+        {
+            Damaged(_damageInContact);
+        } else 
+        {
+            _damageInContact = 0;
+        }
+        _invulnerabilityCD = Mathf.Clamp(_invulnerabilityCD - Time.deltaTime, 0f, _invulnerabilityTime);
         CheckOxygenLevel();
     }
 
@@ -47,9 +64,16 @@ public class OxygenBar : MonoBehaviour
         }
     }
 
-    void AddOxygen(float oxygenAmount) 
+    public void AddOxygen(float oxygenAmount) 
     { 
         _currentOxygen += oxygenAmount;
+        _currentOxygen = Mathf.Clamp(_currentOxygen, 0f, _maxOxygen);
+        UpdateOxygen();
+    }
+
+    public void RemoveOxygen(float oxygenAmount) 
+    {
+        _currentOxygen -= oxygenAmount;
         _currentOxygen = Mathf.Clamp(_currentOxygen, 0f, _maxOxygen);
         UpdateOxygen();
     }
@@ -86,5 +110,23 @@ public class OxygenBar : MonoBehaviour
         {
             _oxygenLevel = OxygenLevel.Low;
         }
+    }
+
+    public void Damaged(float damageAmount)
+    {
+        if(_invulnerabilityCD <= 0)
+        {
+            RemoveOxygen(damageAmount);
+            _invulnerabilityCD = _invulnerabilityTime;
+            if(damageAmount > _damageInContact)
+            {
+                _damageInContact = damageAmount;
+            }
+        }
+    }
+
+    public void InContactWithEnemy(bool inContact)
+    {
+        _inContactWithEnemy = inContact;
     }
 }

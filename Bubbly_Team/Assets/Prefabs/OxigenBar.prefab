@@ -50,9 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb48b2c83f5a39c49bf8de20b1309f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentOxygen: 0
   _oxygenBarFill: {fileID: 1809865728729181255}
-  _isDrowning: 0
+  _isDrowning: 1
   _drowningSpeed: 5
+  _invulnerabilityTime: 1
   _oxygenLevel: 0
 --- !u!1 &7419088344751236256
 GameObject:
