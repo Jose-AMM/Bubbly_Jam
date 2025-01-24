@@ -15,6 +15,14 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // fade in black panel
+        Debug.Log("Loading game scene.");
+
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Closing the game.");
+        Application.Quit();
     }
 }
