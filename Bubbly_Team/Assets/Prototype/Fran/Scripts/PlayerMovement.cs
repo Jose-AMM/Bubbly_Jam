@@ -21,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mouseWorldPosition);
-
+        //Debug.Log(mouseWorldPosition); //Jose
+        
         if (!boosting && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             _rb.velocity =
@@ -38,5 +38,15 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(_boostDelay);
         boosting = false;
+    }
+
+    //Jose
+    public void Stop(){
+        _rb.velocity = Vector2.zero;
+        boosting = false;
+        _rb.isKinematic = true;
+    }
+    public void AsNew(){
+        _rb.isKinematic = false;
     }
 }
