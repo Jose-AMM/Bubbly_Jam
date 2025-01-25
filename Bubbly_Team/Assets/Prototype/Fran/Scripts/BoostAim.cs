@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BoostAim : MonoBehaviour
+{
+    [SerializeField] private LineRenderer lineRenderer;
+
+    private Vector2 _startPosition = new Vector2();
+    private Vector2 _endPosition = new Vector2();
+
+    private float _lineMax = 1.0f;
+
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    public void aimLine(Vector2 mouseWorldPosition, Vector2 playerToMouseDirection)
+    {
+        lineRenderer.enabled = true;
+
+        _startPosition = transform.position;
+        lineRenderer.SetPosition(0, _startPosition);
+
+        _endPosition = mouseWorldPosition;
+        float lineLength = Mathf.Clamp(Vector2.Distance(_startPosition, _endPosition), 0, _lineMax);
+        _endPosition = _startPosition + (playerToMouseDirection * lineLength);
+        lineRenderer.SetPosition(1, _endPosition);
+    }
+}
