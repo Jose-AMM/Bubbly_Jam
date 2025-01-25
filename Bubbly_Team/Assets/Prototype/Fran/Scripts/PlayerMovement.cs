@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _mouseWorldPosition = new Vector2();
     private Vector2 _playerToMouseDirection = new Vector2();
 
+    private bool canRotate = true;
     private float _playerRotationDeg = 0.0f;
     private bool _boosting = false;
     private float _boostSpeedCurrent = 0.0f;
@@ -75,18 +76,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _sr.flipY = transform.rotation.eulerAngles.z is >= 90.0f and < 270.0f;
+        if (canRotate)
+        {
+            _sr.flipY = transform.rotation.eulerAngles.z is >= 90.0f and < 270.0f;
 
-        _playerRotationDeg = Mathf.Atan2(_playerToMouseDirection.y, _playerToMouseDirection.x) * Mathf.Rad2Deg;
+            _playerRotationDeg = Mathf.Atan2(_playerToMouseDirection.y, _playerToMouseDirection.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation,
-            Quaternion.Euler(0f, 0f, _playerRotationDeg), rotateVelocity * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation,
+                Quaternion.Euler(0f, 0f, _playerRotationDeg), rotateVelocity * Time.deltaTime);
+        }
     }
 
-    //Jose
     public void Stop()
     {
         _rb.velocity = Vector2.zero;
+        canRotate = false;
         _boosting = false;
         _rb.isKinematic = true;
     }
@@ -94,5 +98,6 @@ public class PlayerMovement : MonoBehaviour
     public void AsNew()
     {
         _rb.isKinematic = false;
+        canRotate = true;
     }
 }
