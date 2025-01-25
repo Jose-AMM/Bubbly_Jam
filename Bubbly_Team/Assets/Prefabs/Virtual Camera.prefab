@@ -87,6 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSpeed: 5
   deadZoneY: 1
+  shakeAmount: 0.3
+  shakeTime: 1
 --- !u!1 &4346191706917481467
 GameObject:
   m_ObjectHideFlags: 0

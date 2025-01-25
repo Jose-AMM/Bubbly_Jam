@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera virtualCamera; 
 
     private ManualCamera manualCamera;
+
     public static GameManager Instance  { get; private set; }
 
     void Awake(){
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         blackScreen.GetComponent<BlackPanelLogic>().StartFadeOut();
-        manualCamera.GetComponent<ManualCamera>();
+        manualCamera = virtualCamera.GetComponent<ManualCamera>();
         DisablePlayer();
     }
 
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha3))
         {
             Camera.m_Lens.OrthographicSize = 15;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            virtualCamera.Follow = null;
+            manualCamera.StartShakeCamera();
         }
     }
 
@@ -101,11 +107,16 @@ public class GameManager : MonoBehaviour
         SetFollowToPlayer();
     }
 
-    private void SetFollowToPlayer()
+    public void SetFollowToPlayer()
     {
         virtualCamera.Follow = Player.transform;
 
         Debug.Log("Camera follow set to the player.");
+    }
+
+    public void CleanVirtualCameraFollow()
+    {
+        virtualCamera.Follow = null;
     }
 
     public void StartAutoScroll()
@@ -116,8 +127,17 @@ public class GameManager : MonoBehaviour
 
     public void StopAutoScroll()
     {
-        virtualCamera.Follow = Player.transform; 
         virtualCamera.transform.position = Player.transform.position;
+        virtualCamera.Follow = Player.transform; 
         manualCamera.StopAutoScroll();
+    }
+
+    public void TPPlayerToPosition(Vector3 pos)
+    {
+        Vector3 playerPos = Player.transform.position;
+        Vector3 delta = pos - playerPos;
+        Player.transform.position = pos;
+
+        virtualCamera.OnTargetObjectWarped(Player.transform, delta);
     }
 }
