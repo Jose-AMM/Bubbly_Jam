@@ -24,10 +24,12 @@ public class PlayerMovement : MonoBehaviour
     private float _boostTimeCurrent = 0.0f;
 
     private Rigidbody2D _rb;
+    private SpriteRenderer _sr;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -63,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _boostSpeedCurrent = Mathf.Clamp(boostVelocity * boostCurve.Evaluate(_boostTimeCurrent / boostDuration),
                     swimVelocity, boostVelocity * 2.0f);
-                Debug.Log(_boostSpeedCurrent);
+
                 _rb.velocity = transform.right * _boostSpeedCurrent;
 
                 _boostTimeCurrent += Time.deltaTime;
@@ -73,7 +75,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _sr.flipY = transform.rotation.eulerAngles.z is >= 90.0f and < 270.0f;
+
         _playerRotationDeg = Mathf.Atan2(_playerToMouseDirection.y, _playerToMouseDirection.x) * Mathf.Rad2Deg;
+
         transform.rotation = Quaternion.RotateTowards(transform.rotation,
             Quaternion.Euler(0f, 0f, _playerRotationDeg), rotateVelocity * Time.deltaTime);
     }
