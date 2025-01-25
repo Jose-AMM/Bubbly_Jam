@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Mouse.current.leftButton.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                _boostSpeedCurrent = boostVelocity * boostCurve.Evaluate(0.0f);
+                _boostSpeedCurrent = boostVelocity *
+                                     Mathf.Clamp(boostCurve.Evaluate(0.0f), swimVelocity, boostVelocity * 2.0f);
                 _rb.velocity = transform.right * _boostSpeedCurrent;
 
                 _boostTimeCurrent = 0.0f;
@@ -60,9 +61,9 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                _boostSpeedCurrent =
-                    Mathf.Clamp(boostVelocity * boostCurve.Evaluate(_boostTimeCurrent / boostDuration), swimVelocity,
-                        boostVelocity);
+                _boostSpeedCurrent = Mathf.Clamp(boostVelocity * boostCurve.Evaluate(_boostTimeCurrent / boostDuration),
+                    swimVelocity, boostVelocity * 2.0f);
+                Debug.Log(_boostSpeedCurrent);
                 _rb.velocity = transform.right * _boostSpeedCurrent;
 
                 _boostTimeCurrent += Time.deltaTime;
