@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private CinemachineVirtualCamera Camera;
-    [SerializeField] private List<BlackPanelLogic> Interfaces;
+    [SerializeField] private GameObject blackScreen;
     [SerializeField] private GameObject Player; 
+    [SerializeField] private CinemachineVirtualCamera virtualCamera; 
     public static GameManager Instance  { get; private set; }
 
 
@@ -24,11 +25,13 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        foreach (BlackPanelLogic Interface in Interfaces){
-        Interface.gameObject.SetActive(true);}
+        blackScreen.GetComponent<BlackPanelLogic>().StartFadeOut();
+
+        DisablePlayer();
 
     }
 
@@ -47,22 +50,61 @@ public class GameManager : MonoBehaviour
         {
             Camera.m_Lens.OrthographicSize = 15;
         }
-        if (Input.GetKey(KeyCode.F)){
-            foreach (BlackPanelLogic Interface in Interfaces){
-                if (Interface.gameObject.activeSelf == true){
-                    Interface.StartFadeOut();
-                    return;
-                }
-            }
-        }
     }
 
     public void DisablePlayer(){
-        Player.SetActive(false);
+
         Player.GetComponent<PlayerMovement>().Stop();
+        Player.GetComponent<JellyfishFloatSimple>().enabled = true;
     }
+
     public void EnablePlayer(){
         Player.GetComponent<PlayerMovement>().AsNew();
-        Player.SetActive(true);
+        Player.GetComponent<JellyfishFloatSimple>().enabled = false;
+        //Player.SetActive(true);
     }
+
+    public void MakeCameraFollowPlayer()
+    {
+        virtualCamera.Follow = Player.transform;
+        //StartCoroutine("EaseCameraToPlayer");
+    }
+
+    private IEnumerator EaseCameraToPlayer()
+    {
+        Vector3 startPosition = virtualCamera.transform.position;
+        Vector3 targetPosition = Player.transform.position;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 2.0f)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / 2.0f;
+
+            // Use an easing function for smooth movement (ease-in-out).
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+            //targetPosition = Player.transform.position;
+
+            // Interpolate position and rotation.
+            virtualCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+            yield return null;
+        }
+
+        // Ensure the final position and rotation match exactly.
+        virtualCamera.transform.position = targetPosition;
+
+        // Set the camera to follow the player (if applicable in your setup).
+        SetFollowToPlayer();
+    }
+
+    private void SetFollowToPlayer()
+    {
+        virtualCamera.Follow = Player.transform;
+
+        Debug.Log("Camera follow set to the player.");
+    }
+
 }

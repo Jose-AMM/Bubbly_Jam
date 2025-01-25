@@ -61,6 +61,9 @@ public class MainMenu : MonoBehaviour
 
         // Aquí puedes añadir cualquier lógica adicional, como cargar una nueva escena.
         Debug.Log("Animation Complete. Ready to start the game!");
+
+        GameManager.Instance.EnablePlayer();
+        GameManager.Instance.MakeCameraFollowPlayer();
     }
 
 

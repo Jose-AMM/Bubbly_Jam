@@ -2600,6 +2600,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fa6833377a8534f8de849a3d953c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMgr: {fileID: 0}
+  targetPosition: {fileID: 0}
+  floatDurationMM: 5
+  floatAmplitudeMM: 20
+  floatSpeedMM: 2
+  lateralAmplitudeMM: 50
 --- !u!1 &4998724745395398366
 GameObject:
   m_ObjectHideFlags: 0
