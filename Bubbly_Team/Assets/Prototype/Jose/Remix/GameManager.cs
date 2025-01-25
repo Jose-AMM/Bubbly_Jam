@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         blackScreen.GetComponent<BlackPanelLogic>().StartFadeOut();
-        manualCamera.GetComponent<ManualCamera>();
+        manualCamera = virtualCamera.GetComponent<ManualCamera>();
         DisablePlayer();
     }
 
