@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
-  Interfaces:
-  - {fileID: 0}
-  - {fileID: 0}
+  blackScreen: {fileID: 0}
   Player: {fileID: 0}
+  virtualCamera: {fileID: 0}
+  cameraSpeed: 10

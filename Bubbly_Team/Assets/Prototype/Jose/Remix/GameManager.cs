@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,10 +10,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera Camera;
     [SerializeField] private GameObject blackScreen;
-    [SerializeField] private GameObject Player; 
+    [SerializeField] public GameObject Player; 
     [SerializeField] private CinemachineVirtualCamera virtualCamera; 
-    public static GameManager Instance  { get; private set; }
 
+    private ManualCamera manualCamera;
+    public static GameManager Instance  { get; private set; }
 
     void Awake(){
         
@@ -30,9 +32,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         blackScreen.GetComponent<BlackPanelLogic>().StartFadeOut();
-
+        manualCamera.GetComponent<ManualCamera>();
         DisablePlayer();
-
     }
 
     // Update is called once per frame
@@ -107,4 +108,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Camera follow set to the player.");
     }
 
+    public void StartAutoScroll()
+    {
+        virtualCamera.Follow = null;
+        manualCamera.StartAutoScroll();
+    }
+
+    public void StopAutoScroll()
+    {
+        virtualCamera.Follow = Player.transform; 
+        virtualCamera.transform.position = Player.transform.position;
+        manualCamera.StopAutoScroll();
+    }
 }
