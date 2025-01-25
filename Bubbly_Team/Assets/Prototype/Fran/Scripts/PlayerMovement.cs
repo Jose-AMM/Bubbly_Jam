@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private bool boosting = false;
     private Rigidbody2D _rb;
 
-    void Start()
+    void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         boosting = false;
         _rb.isKinematic = true;
     }
+
     public void AsNew(){
         _rb.isKinematic = false;
     }

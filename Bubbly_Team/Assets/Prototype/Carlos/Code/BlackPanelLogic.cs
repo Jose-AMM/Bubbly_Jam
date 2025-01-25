@@ -11,9 +11,14 @@ public class BlackPanelLogic : MonoBehaviour
     public bool startActivated = false;
     public float fadeDuration = 1.0f;
 
-    private void Start()
+    private void Awake()
     {
         fadePanel = GetComponent<Image>();
+    }
+
+
+    private void Start()
+    {
         Color startColor = fadePanel.color;
 
         if (startActivated)
@@ -52,7 +57,7 @@ public class BlackPanelLogic : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        GameManager.Instance.DisablePlayer(); //Jose
+        //GameManager.Instance.DisablePlayer(); //Jose
 
         Color color = fadePanel.color;
         color.a = 0.0f;
@@ -72,12 +77,12 @@ public class BlackPanelLogic : MonoBehaviour
 
         color.a = 1;
         fadePanel.color = color;
-        transform.Find("Content").gameObject.SetActive(true); // Jose
+        //transform.Find("Content").gameObject.SetActive(true); // Jose
     }
 
     private IEnumerator FadeOut()
     {
-        transform.Find("Content").gameObject.SetActive(false); // Jose
+        //transform.Find("Content").gameObject.SetActive(false); // Jose
         Color color = fadePanel.color;
         color.a = 1.0f;
         fadePanel.color = color;
@@ -97,7 +102,7 @@ public class BlackPanelLogic : MonoBehaviour
         color.a = 0;
         fadePanel.color = color;
 
-        GameManager.Instance.EnablePlayer(); //Jose
+        //GameManager.Instance.EnablePlayer(); //Jose
         gameObject.SetActive(false);
     }
 
