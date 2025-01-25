@@ -204,7 +204,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -224,7 +224,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.2
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -235,7 +235,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!70 &350173537
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -283,8 +283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046ac62754d842447b72226f57287b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostVelocity: 5
-  _boostDelay: 0.5
+  swimVelocity: 0.1
+  rotateVelocity: 10
+  boostVelocity: 3
+  boostDelay: 0.5
 --- !u!1 &455069571
 GameObject:
   m_ObjectHideFlags: 0

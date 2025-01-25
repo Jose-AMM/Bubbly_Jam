@@ -47,7 +47,8 @@ public class PlayerMovement : MonoBehaviour
         _rb.isKinematic = true;
     }
 
-    public void AsNew(){
+    public void AsNew()
+    {
         _rb.isKinematic = false;
     }
 }
