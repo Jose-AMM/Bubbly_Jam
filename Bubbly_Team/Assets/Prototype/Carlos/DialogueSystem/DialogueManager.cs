@@ -22,6 +22,9 @@ public class DialogueManager : MonoBehaviour
     public Animator dialogueBoxAnimator;
     public AudioSource characterSound;
 
+    [Header("CreepySmile")]
+    public GameObject creepySmile;
+
     // Dialogue in parameters
     private Queue<string> sentences;
     private Dialogue currentDialogue;
@@ -35,13 +38,26 @@ public class DialogueManager : MonoBehaviour
     private List<Color32[]> originalColors = new List<Color32[]>();
 
     // Regex optimizations
-    private static readonly Regex TagRegex = new Regex(@"\[(/?)(wave|shake|bounce|rainbow|rotate|fade|bold|italic|underline|red|blue|green|br)\]", RegexOptions.Compiled);
+    private static readonly Regex TagRegex = new Regex(@"\[(/?)(wave|shake|bounce|rainbow|rotate|fade|bold|italic|underline|red|blue|green|br|smile)\]", RegexOptions.Compiled);
     private static readonly Regex VisibleTextRegex = new Regex("<.*?>", RegexOptions.Compiled);
 
     // Animation parameters
     private const float RAINBOW_SPEED = 2.5f;
     private const float ROTATE_SPEED = 25f;
     private const float FADE_SPEED = 3f;
+
+    // Smile interval struct
+    private struct SmileInterval
+    {
+        public int Start;
+        public int End;
+
+        public SmileInterval(int start, int end)
+        {
+            Start = start;
+            End = end;
+        }
+    }
 
     // Singleton pattern
     public static DialogueManager Instance { get; private set; }
@@ -102,7 +118,8 @@ public class DialogueManager : MonoBehaviour
                 EndDialogue();
             }
             return;
-        }else if (sentences.Count == 1)
+        }
+        else if (sentences.Count == 1)
         {
             isLastSentence = true;
         }
@@ -113,7 +130,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ProcessChoiceOptionA()
     {
-        Debug.Log("DialogueID: " + currentDialogue.dialogueID + "; Chose Option A: " +  optionAText.text);
+        Debug.Log("DialogueID: " + currentDialogue.dialogueID + "; Chose Option A: " + optionAText.text);
         choiceTracker.SetChoiceOutput(currentDialogue.dialogueID, true);
         choiceTracker.SetChoiceOutput(currentDialogue.dialogueIndex, true);
 
@@ -164,18 +181,15 @@ public class DialogueManager : MonoBehaviour
         typeSentenceCoroutine = StartCoroutine(TypeSentence(parsedData));
     }
 
-    IEnumerator TypeSentence((string formatted, List<TextAnimation> animations) parsedData)
+    IEnumerator TypeSentence((string formatted, List<TextAnimation> animations, List<SmileInterval> smileIntervals) parsedData)
     {
         dialogueText.text = "";
         int visibleCharCount = 0;
-
-        //characterSound.loop = true;
 
         for (int i = 0; i < parsedData.formatted.Length; i++)
         {
             char c = parsedData.formatted[i];
 
-            // Handle rich text tags
             if (c == '<')
             {
                 int tagEnd = parsedData.formatted.IndexOf('>', i);
@@ -188,15 +202,13 @@ public class DialogueManager : MonoBehaviour
             dialogueText.ForceMeshUpdate();
             CacheOriginalVertices();
 
-            if (IsVisibleCharacter(c))
+            bool isVisible = IsVisibleCharacter(c);
+            if (isVisible)
             {
-                //float randPitch = Random.Range(0.0f, 1.0f);
                 float randPitch = Random.Range(currentDialogue.minRangePitch, currentDialogue.maxRangePitch);
                 characterSound.pitch = randPitch;
                 characterSound.Play();
-
                 visibleCharCount++;
-                //characterSound?.Play();
             }
 
             foreach (var anim in parsedData.animations)
@@ -207,10 +219,23 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
+            // Update creepy smile state
+            bool shouldActivateSmile = false;
+            foreach (var interval in parsedData.smileIntervals)
+            {
+                if (visibleCharCount >= interval.Start && visibleCharCount <= interval.End)
+                {
+                    shouldActivateSmile = true;
+                    break;
+                }
+            }
+            creepySmile.SetActive(shouldActivateSmile);
+
             yield return new WaitForSeconds(currentDialogue.talkTime);
         }
 
         characterSound.loop = false;
+        creepySmile.SetActive(false);
 
         if (isLastSentence && currentDialogue.isChoiceDialogue)
         {
@@ -224,15 +249,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private (string formatted, List<TextAnimation> animations) ParseSentence(string sentence)
+    private (string formatted, List<TextAnimation> animations, List<SmileInterval> smileIntervals) ParseSentence(string sentence)
     {
         List<TextAnimation> animations = new List<TextAnimation>();
+        List<SmileInterval> smileIntervals = new List<SmileInterval>();
         StringBuilder sb = new StringBuilder(sentence.Length);
         Stack<TextAnimation> openTags = new Stack<TextAnimation>();
+        Stack<int> smileStartIndices = new Stack<int>();
         int tagAdjustment = 0;
         int visibleCharCount = 0;
 
-        // Handle manual line breaks
         sentence = sentence.Replace("[br]", "\n");
 
         foreach (Match m in TagRegex.Matches(sentence))
@@ -246,21 +272,39 @@ public class DialogueManager : MonoBehaviour
                 if (IsVisibleCharacter(sentence[i])) visibleCharCount++;
             }
 
-            if (!isClosing)
+            if (tagType == "smile")
             {
-                openTags.Push(new TextAnimation(
-                    tagType,
-                    visibleCharCount,
-                    m.Index + m.Length
-                ));
+                if (!isClosing)
+                {
+                    smileStartIndices.Push(visibleCharCount);
+                }
+                else
+                {
+                    if (smileStartIndices.Count > 0)
+                    {
+                        int start = smileStartIndices.Pop();
+                        smileIntervals.Add(new SmileInterval(start, visibleCharCount));
+                    }
+                }
             }
             else
             {
-                if (openTags.Count > 0 && openTags.Peek().Type == tagType)
+                if (!isClosing)
                 {
-                    TextAnimation anim = openTags.Pop();
-                    anim.Length = visibleCharCount - anim.StartIndex;
-                    animations.Add(anim);
+                    openTags.Push(new TextAnimation(
+                        tagType,
+                        visibleCharCount,
+                        m.Index + m.Length
+                    ));
+                }
+                else
+                {
+                    if (openTags.Count > 0 && openTags.Peek().Type == tagType)
+                    {
+                        TextAnimation anim = openTags.Pop();
+                        anim.Length = visibleCharCount - anim.StartIndex;
+                        animations.Add(anim);
+                    }
                 }
             }
 
@@ -279,8 +323,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         sb.Append(sentence, tagAdjustment, sentence.Length - tagAdjustment);
-        return (sb.ToString(), animations);
+        return (sb.ToString(), animations, smileIntervals);
     }
+
+    // Rest of the class remains unchanged (AnimateText and helper methods)
 
     IEnumerator AnimateText(TextAnimation animation)
     {
@@ -306,11 +352,9 @@ public class DialogueManager : MonoBehaviour
                 int materialIndex = charInfo.materialReferenceIndex;
                 int vertexIndex = charInfo.vertexIndex;
 
-                // Original position and color
                 Vector3[] verts = originalVertices[materialIndex];
                 Color32[] colors = originalColors[materialIndex];
 
-                // Apply animations
                 switch (animation.Type)
                 {
                     case "rainbow":
