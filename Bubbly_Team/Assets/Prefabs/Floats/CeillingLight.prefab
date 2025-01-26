@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 2979369511543856418}
   - component: {fileID: 5940922809493171804}
   - component: {fileID: 7644875728812677618}
+  - component: {fileID: -6528299184875834854}
   m_Layer: 0
   m_Name: CeillingLight
   m_TagString: Untagged
@@ -292,3 +293,16 @@ MonoBehaviour:
   - {x: 0.37710568, y: -0.81952524, z: 0}
   - {x: -0.0603981, y: 1.4339969, z: 0}
   - {x: -0.27879027, y: 1.4290812, z: 0}
+--- !u!114 &-6528299184875834854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8310437441445899418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594ad13c2a85f6f43868a2967f743293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5

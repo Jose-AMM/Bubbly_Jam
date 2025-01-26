@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5827196904365548187}
   - component: {fileID: 7633578297809694556}
   - component: {fileID: 6091732983753993455}
+  - component: {fileID: -2065046675669826481}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -158,6 +159,19 @@ PolygonCollider2D:
       - {x: 0.48905945, y: 0.09804237}
       - {x: 0.39774036, y: 1.0285838}
   m_UseDelaunayMesh: 0
+--- !u!114 &-2065046675669826481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015643291288630281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594ad13c2a85f6f43868a2967f743293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &2975714591735498100
 GameObject:
   m_ObjectHideFlags: 0
