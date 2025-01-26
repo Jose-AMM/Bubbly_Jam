@@ -11,8 +11,6 @@ public class SoundManager : MonoBehaviour
     private List<AudioClip> AudioClips;
     [SerializeField]
     private List<AudioClip> Sounds;
-    [SerializeField]
-    public AudioSource audioSource;
     public static SoundManager Instance  { get; private set; }
 
 
@@ -33,10 +31,28 @@ public class SoundManager : MonoBehaviour
         foreach (var Clip in AudioClips)
         {
             switch (Clip.name){
-                case "Horror":
-                    LoadClip(Clip, 0.6f);
+                case "COMODIN":
+                    LoadClip(Clip, 1.0f);
                     break;
-                case "Goofy":
+                case "MUS-AGUA":
+                    LoadClip(Clip, 1.0f);
+                    break;
+                case "MUS-AGUA-GLITCH":
+                    LoadClip(Clip, 0.0f);
+                    break;
+                case "MUS-TIENDA":
+                    LoadClip(Clip, 0.0f);
+                    break;
+                case "MUS-TIENDA-GLITCH":
+                    LoadClip(Clip, 0.0f);
+                    break;
+                case "ALARM":
+                    LoadClip(Clip, 0.0f);
+                    break;
+                case "CHORD-TENSION":
+                    LoadClip(Clip, 0.0f);
+                    break;
+                case "BUBBLE-LOOP":
                     LoadClip(Clip, 0.0f);
                     break;
                 default:
@@ -133,6 +149,41 @@ public class SoundManager : MonoBehaviour
             ElapsedTime += Time.deltaTime;
             Source.volume = Mathf.Lerp(InitialVolume, TargetVolume, ElapsedTime / FadeTime);
             yield return null;
+        }
+    }
+
+    public void EnterShop()
+    {
+        StopSounds();
+        SetVolume("COMODIN", 0.0f, 0.0f);
+        SetVolume("MUS-AGUA", 0.0f, 0.5f);
+        SetVolume("MUS-AGUA-GLITCH", 0.0f, 0.5f);
+        if (GameManager.Instance.GlitchedMusic)
+        {
+            BeginClip("MUS-TIENDA-GLITCH", 0.0f);
+            SetVolume("MUS-TIENDA-GLITCH", 1.0f, 5.0f);
+        }
+        else
+        {
+            BeginClip("MUS-TIENDA", 0.0f);
+            SetVolume("MUS-TIENDA", 1.0f, 5.0f);
+        }
+        PlaySound("PUERTA", 1.0f);
+    }
+
+    public void ExitShop()
+    {
+        StopSounds();
+        SetVolume("COMODIN", 1.0f, 0.0f);
+        SetVolume("MUS-TIENDA", 0.0f, 1.0f);
+        SetVolume("MUS-TIENDA-GLITCH", 0.0f, 1.0f);
+        if (GameManager.Instance.GlitchedMusic)
+        {
+            SetVolume("MUS-AGUA-GLITCH", 1.0f, 1.0f);
+        }
+        else
+        {
+            SetVolume("MUS-AGUA", 1.0f, 1.0f);
         }
     }
 }
