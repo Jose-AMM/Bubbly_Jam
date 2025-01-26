@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class DamagePlayer : MonoBehaviour
 {
-    //TO DO: Hacer GameManager Instance para conseguir el player
-    [SerializeField] OxygenBar player;
+    private OxygenBar oxygenBar;
     [SerializeField] int damage;
 
-    //TO DO: Modificar todo esto cuando tengamos el player y el movimiento
+
+    private void Start()
+    {
+        oxygenBar = GameManager.Instance.Player.GetComponent<OxygenBar>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Arreglar collision con el player
-        if (player != null) 
+        if (oxygenBar != null) 
         {
-            player.Damaged(damage);
-            player.InContactWithEnemy(true);
+            oxygenBar.Damaged(damage);
+            oxygenBar.InContactWithEnemy(true);
+            //player.Damaged(damage);
+            //player.InContactWithEnemy(true);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        player.InContactWithEnemy(false);
+        oxygenBar.InContactWithEnemy(false);
+        //player.InContactWithEnemy(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (oxygenBar != null)
+        {
+            oxygenBar.Damaged(damage);
+            oxygenBar.InContactWithEnemy(true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        oxygenBar.InContactWithEnemy(false);
     }
 }
