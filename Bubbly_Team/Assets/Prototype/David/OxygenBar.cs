@@ -109,7 +109,7 @@ public class OxygenBar : MonoBehaviour
     void CheckOxygenLevel()
     {
         float oxygenPercentage = _currentOxygen / _maxOxygen;
-        SoundManager.Instance.SetVolume("BUBBLE-LOOP", 1.0f-oxygenPercentage, 0.0f);
+        //SoundManager.Instance.SetVolume("BUBBLE-LOOP", 1.0f-oxygenPercentage, 0.0f);
         
         if (oxygenPercentage == 1.0f && _oxygenLevel != OxygenLevel.Max)
         {
