@@ -2580,6 +2580,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3277254004599182575}
     - target: {fileID: 5887397792642932750, guid: 29b1335f8ceb16e4f8792a179f3e409a, type: 3}
+      propertyPath: creepySmile
+      value: 
+      objectReference: {fileID: 5485442019105981138}
+    - target: {fileID: 5887397792642932750, guid: 29b1335f8ceb16e4f8792a179f3e409a, type: 3}
       propertyPath: optionAText
       value: 
       objectReference: {fileID: 1874091245846432582}
