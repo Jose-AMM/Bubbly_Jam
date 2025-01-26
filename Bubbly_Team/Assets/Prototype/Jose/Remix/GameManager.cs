@@ -396,11 +396,11 @@ public class GameManager : MonoBehaviour
         if (currentCheckpoint >=3)
         {
             SoundManager.Instance.PlaySound("SIRENA", 0.7f);
-            StartAutoScroll();
+            //StartAutoScroll();
         }
         else
         {
-            StopAutoScroll();
+            //StopAutoScroll();
         }
         TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
         Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
