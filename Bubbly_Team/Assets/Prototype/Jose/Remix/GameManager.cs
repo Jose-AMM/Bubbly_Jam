@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private BlackPanelLogic BlackPanel;
     [SerializeField] private List<GameObject> ShopPrefabs;
     private GameObject InstantiatedShop;
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance  { get; private set; }
 
     void Awake()
     {
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         float SoundVolume = 1.0f;
-
+        
         if (Input.GetKey(KeyCode.Alpha1))
         {
             SoundManager.Instance.PlaySound("AHOGANDOSE", SoundVolume);
@@ -64,39 +64,30 @@ public class GameManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("DASH", SoundVolume);
         }
-
         if (Input.GetKey(KeyCode.Alpha3))
         {
             SoundManager.Instance.PlaySound("GOLPE", 1.3f);
         }
-
         if (Input.GetKey(KeyCode.Alpha4))
         {
             SoundManager.Instance.PlaySound("PECES", 1.4f);
         }
-
         if (Input.GetKey(KeyCode.Alpha5))
         {
             SoundManager.Instance.PlaySound("RESPIRACION", SoundVolume);
-        }
-
+        }        
         if (Input.GetKey(KeyCode.Alpha6))
         {
             SoundManager.Instance.PlaySound("SIRENA", 0.7f);
         }
     }
-
-    public Vector2 GetPlayerPos()
-    {
+    public Vector2 GetPlayerPos(){
         return new Vector2(Player.transform.position.x, Player.transform.position.y);
     }
-
-    public void DisablePlayer()
-    {
+    public void DisablePlayer(){
         Player.GetComponent<PlayerMovement>().Stop();
         Player.GetComponent<JellyfishFloatSimple>().enabled = true;
         Cursor.visible = true;
-        Player.GetComponent<OxygenBar>().enabled = false;
     }
 
     public void KillJellyfish()
@@ -104,8 +95,7 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<JellyfishFloatSimple>().enabled = false;
     }
 
-    public void GetOxygen()
-    {
+    public void GetOxygen(){
         Player.transform.Find("Canvas/OxigenBar").GetComponent<OxygenBar>().AddOxygen(100.0f);
         SoundManager.Instance.PlaySound("Gasp", 0.2f);
     }
@@ -122,22 +112,18 @@ public class GameManager : MonoBehaviour
         StartCoroutine(UnloadShop());
     }
 
-    IEnumerator LoadShop(String PrefabName)
-    {
+    IEnumerator LoadShop(String PrefabName){
         BlackPanel.gameObject.SetActive(true);
         yield return new WaitForSeconds(0);
         BlackPanel.StartFadeIn();
         DisablePlayer();
         yield return new WaitForSeconds(BlackPanel.fadeDuration);
         Debug.Log("Load Prefab: " + PrefabName);
-        foreach (GameObject ShopPrefab in ShopPrefabs)
-        {
-            if (ShopPrefab.name == PrefabName)
-            {
+        foreach (GameObject ShopPrefab in ShopPrefabs){
+            if (ShopPrefab.name == PrefabName){
                 InstantiatedShop = Instantiate(ShopPrefab, Vector3.zero, Quaternion.identity);
-            }
+            }  
         }
-
         yield return new WaitForSeconds(0.2f);
         BlackPanel.StartFadeOut();
         yield return new WaitForSeconds(BlackPanel.fadeDuration);
@@ -204,7 +190,6 @@ public class GameManager : MonoBehaviour
                         }
                     }
                 }
-
                 break;
             case "SHOP4":
                 allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
@@ -215,11 +200,12 @@ public class GameManager : MonoBehaviour
                         t.TriggerDialogue();
                     }
                 }
-
                 break;
             default:
                 break;
         }
+
+
     }
 
     public IEnumerator UnloadShop()
@@ -240,7 +226,6 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<PlayerMovement>().AsNew();
         Player.GetComponent<JellyfishFloatSimple>().enabled = false;
         //Player.SetActive(true);
-        Player.GetComponent<OxygenBar>().enabled = true;
         Cursor.visible = false;
     }
 
