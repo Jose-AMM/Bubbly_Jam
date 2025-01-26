@@ -46,7 +46,7 @@ public class SoundManager : MonoBehaviour
                 case "MUS-TIENDA-GLITCH":
                     LoadClip(Clip, 0.0f);
                     break;
-                case "ALARM":
+                case "ALARMA":
                     LoadClip(Clip, 0.0f);
                     break;
                 case "CHORD-TENSION":

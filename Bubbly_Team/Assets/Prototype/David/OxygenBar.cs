@@ -126,7 +126,7 @@ public class OxygenBar : MonoBehaviour
         else if(oxygenPercentage <= 0.66f && oxygenPercentage > 0.33f  && _oxygenLevel != OxygenLevel.Medium)
         {
             _oxygenLevel = OxygenLevel.Medium;
-            SoundManager.Instance.SetVolume("CHORD-TENSIONP", 0.5f, 0.0f);
+            SoundManager.Instance.SetVolume("CHORD-TENSION", 0.5f, 0.0f);
         }
         else if (oxygenPercentage <= 0.33f && oxygenPercentage > 0.0f  && _oxygenLevel != OxygenLevel.Low)
         {
