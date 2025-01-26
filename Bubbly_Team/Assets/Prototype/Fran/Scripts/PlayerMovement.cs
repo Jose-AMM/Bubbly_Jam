@@ -85,8 +85,8 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation,
                 Quaternion.Euler(0f, 0f, _playerRotationDeg), rotateVelocity * Time.deltaTime);
 
-            gameObject.GetComponent<BoostAim>().aimLine(_mouseWorldPosition, _playerToMouseDirection);
-            gameObject.GetComponent<BoostAim>().aimArrow(_mouseWorldPosition, _playerRotationDeg);
+            gameObject.GetComponent<BoostAim>().AimLine(_mouseWorldPosition, _playerToMouseDirection);
+            gameObject.GetComponent<BoostAim>().AimArrow(_mouseWorldPosition, _playerRotationDeg);
         }
     }
 

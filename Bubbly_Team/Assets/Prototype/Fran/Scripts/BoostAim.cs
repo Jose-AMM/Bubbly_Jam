@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BoostAim : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private GameObject aimArrowChild;
+    [SerializeField] private GameObject aimArrow;
 
     private Vector2 _startPosition = new Vector2();
     private Vector2 _endPosition = new Vector2();
@@ -16,10 +17,10 @@ public class BoostAim : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        aimArrowChild = transform.Find("AimArrow").gameObject;
+        aimArrow = transform.Find("AimArrow").gameObject;
     }
 
-    public void aimLine(Vector2 mouseWorldPosition, Vector2 playerToMouseDirection)
+    public void AimLine(Vector2 mouseWorldPosition, Vector2 playerToMouseDirection)
     {
         lineRenderer.enabled = true;
 
@@ -32,10 +33,10 @@ public class BoostAim : MonoBehaviour
         lineRenderer.SetPosition(1, _endPosition);
     }
 
-    public void aimArrow(Vector2 mouseWorldPosition, float playerRotationDeg)
+    public void AimArrow(Vector2 mouseWorldPosition, float playerRotationDeg)
     {
-        aimArrowChild.SetActive(true);
-        aimArrowChild.transform.position = mouseWorldPosition;
-        aimArrowChild.transform.rotation = Quaternion.Euler(0f, 0f, playerRotationDeg - 135.0f);
+        aimArrow.SetActive(true);
+        aimArrow.transform.position = mouseWorldPosition;
+        aimArrow.transform.rotation = Quaternion.Euler(0f, 0f, playerRotationDeg - 135.0f);
     }
 }
