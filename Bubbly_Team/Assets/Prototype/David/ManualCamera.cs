@@ -28,6 +28,9 @@ public class ManualCamera : MonoBehaviour
 
         if (autoscroll)
         {
+            float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect; // For orthographic cameras
+            float cameraRightLimit = gameObject.transform.position.x + cameraHalfWidth;
+            float cameraLeftLimit = gameObject.transform.position.x - cameraHalfWidth;
             //Se mueve hacia la derecha a una velocidad constante
             cameraPosition.x += cameraSpeed * Time.deltaTime;
             //Calcular la y de la camara con respecto al player
@@ -40,6 +43,16 @@ public class ManualCamera : MonoBehaviour
                 cameraPosition.y = playerPosition.y + deadZoneY;
             }
 
+            if (playerPosition.x > cameraRightLimit) 
+            {
+                // Stop camera from moving further right if player is leaving view
+                cameraPosition.x = cameraRightLimit - cameraHalfWidth;
+            } 
+            else if (playerPosition.x < cameraLeftLimit) 
+            {
+                // Stop camera from moving further left if player is leaving view
+                cameraPosition.x = cameraLeftLimit + cameraHalfWidth;
+            }
             gameObject.transform.position = cameraPosition;
         }
 

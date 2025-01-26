@@ -4447,6 +4447,10 @@ PrefabInstance:
       propertyPath: dialogueBoxAnimator
       value: 
       objectReference: {fileID: 7987249263619264533}
+    - target: {fileID: 8943636976867942519, guid: 29b1335f8ceb16e4f8792a179f3e409a, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

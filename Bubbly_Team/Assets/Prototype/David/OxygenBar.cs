@@ -132,7 +132,7 @@ public class OxygenBar : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("AHOGANDOSE", 1.0f);
             SoundManager.Instance.SetVolume("CHORD-TENSION", 1.0f, 0.0f);
-            SoundManager.Instance.SetVolume("ALARMA", 0.5f, 0.0f);
+            SoundManager.Instance.SetVolume("ALARMA", 1.0f, 0.0f);
             _oxygenLevel = OxygenLevel.Low;
         } 
         else if (oxygenPercentage <= 0.0f  && _oxygenLevel != OxygenLevel.Zero){
@@ -145,7 +145,7 @@ public class OxygenBar : MonoBehaviour
     {
         if(_invulnerabilityCD <= 0)
         {
-            SoundManager.Instance.PlaySound("GOLPE", 1.0f);
+            SoundManager.Instance.PlaySound("GOLPE", 2.0f);
             RemoveOxygen(damageAmount);
             _invulnerabilityCD = _invulnerabilityTime;
             if(damageAmount > _damageInContact)

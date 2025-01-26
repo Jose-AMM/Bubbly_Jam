@@ -54,7 +54,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*if (Input.GetKeyDown(KeyCode.F))
+        {
+            StartAutoScroll();
+        }*/
     }
 
     public Vector2 GetPlayerPos()
