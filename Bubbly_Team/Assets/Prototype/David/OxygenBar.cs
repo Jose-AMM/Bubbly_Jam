@@ -109,18 +109,24 @@ public class OxygenBar : MonoBehaviour
     void CheckOxygenLevel()
     {
         float oxygenPercentage = _currentOxygen / _maxOxygen;
-
-        if (oxygenPercentage == 1.0f && _oxygenLevel != OxygenLevel.Max){
+        SoundManager.Instance.SetVolume("BUBBLE-LOOP", 1.0f-oxygenPercentage, 0.0f);
+        
+        if (oxygenPercentage == 1.0f && _oxygenLevel != OxygenLevel.Max)
+        {
             _oxygenLevel = OxygenLevel.Max;
+            SoundManager.Instance.SetVolume("CHORD-TENSION", 0.0f, 0.0f);
+            SoundManager.Instance.SetVolume("ALARM", 0.0f, 0.0f);
         }
         if (oxygenPercentage <= 1.0f && oxygenPercentage > 0.66f && _oxygenLevel != OxygenLevel.High)
         {
             _oxygenLevel = OxygenLevel.High;
+            SoundManager.Instance.SetVolume("CHORD-TENSION", 0.0f, 0.0f);
+            SoundManager.Instance.SetVolume("ALARM", 0.0f, 0.0f);
         }
         else if(oxygenPercentage <= 0.66f && oxygenPercentage > 0.33f  && _oxygenLevel != OxygenLevel.Medium)
         {
             _oxygenLevel = OxygenLevel.Medium;
-            SoundManager.Instance.SetVolume("BUBBLE-LOOP", 0.5f, 0.0f);
+            SoundManager.Instance.SetVolume("CHORD-TENSIONP", 0.5f, 0.0f);
         }
         else if (oxygenPercentage <= 0.33f && oxygenPercentage > 0.0f  && _oxygenLevel != OxygenLevel.Low)
         {
@@ -129,7 +135,7 @@ public class OxygenBar : MonoBehaviour
             SoundManager.Instance.SetVolume("ALARM", 0.5f, 0.0f);
             _oxygenLevel = OxygenLevel.Low;
         } 
-        else if (oxygenPercentage == 0.0f  && _oxygenLevel != OxygenLevel.Zero){
+        else if (oxygenPercentage <= 0.0f  && _oxygenLevel != OxygenLevel.Zero){
             _oxygenLevel = OxygenLevel.Zero;
             SoundManager.Instance.PlaySound("AHOGANDOSE", 1.0f);
         }
