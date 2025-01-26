@@ -187,15 +187,15 @@ MonoBehaviour:
     dialogueIndex: 14
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - You should really try to relax.
-    - "I know this can be scary and all\u2026"
-    - But look around, I created this cozy shop for you.
-    - Deep breaths, inhale, exhale. Breathe.
+    - You should really try to [wave]relax[/wave].
+    - "I know this can be [fade]scary[/fade] and all\u2026"
+    - '[wave]But look around, I created this cozy shop for you.[/wave]'
+    - '[fade]Deep breaths, inhale, exhale. [red][bold]Breathe[/bold][/red].[/fade]'
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -469,16 +469,16 @@ MonoBehaviour:
     dialogueIndex: 13
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - "I\u2019m so glad we are on the same page."
-    - I have prepared some exquisite halls for you next.
-    - You see, your lungs belong to me now.
-    - "You may feel you are suffocating\u2026 "
-    - "But you won\u2019t unless I let you."
+    - "[bold]I\u2019m so glad we are on the same page.[/bold]"
+    - I have prepared some [wave]exquisite[/wave] halls for you next.
+    - You see, your [blue]lungs[/blue] [red]belong to me now[/red].
+    - "[shake][red]You may feel you are suffocating\u2026[/red][/shake]"
+    - "[wave]But you won\u2019t unless I let you.[/wave]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -806,15 +806,15 @@ MonoBehaviour:
     dialogueIndex: 15
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - But I think you have already lost yourself, in a way.
-    - "Your body doesn\u2019t act at your command entirely."
+    - But I think you have already [fade]lost yourself[/fade], in a way.
+    - "[fade]Your body doesn\u2019t act at your command entirely.[/fade]"
     - Your mind is still present, the only thing left.
-    - What defines you then, thoughts or actions?
+    - '[wave]What defines you then, thoughts or actions?[/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: Thoughts
     sentenceOptionB: 'Actions
@@ -876,16 +876,16 @@ MonoBehaviour:
     dialogueIndex: 16
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - "Sadly, I don\u2019t think it will be easy for you to forget."
-    - But they will forget you soon enough.
-    - That is the way this realm works, you know?
-    - Once in here, you are erased from the other side.
-    - Am I a liar or am I being honest?
+    - '[wave]But they will forget you soon enough.[/wave]'
+    - That is the way [red]this realm[/red] works, you know?
+    - Once in here, [fade]you are erased[/fade] from the other side.
+    - '[bold]Am I a liar or am I being honest?[/bold]'
     isChoiceDialogue: 1
     sentenceOptionA: Liar
     sentenceOptionB: Honest
@@ -1157,15 +1157,16 @@ MonoBehaviour:
     dialogueIndex: 12
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - I was joking, of course.
-    - "You will have noticed by now, I\u2019m nothing like you."
-    - I can breathe, I can swim, I have my little and cozy shop.
-    - Am I a monster or an angel to you?
+    - I was [rotate][bold]joking[/bold][/rotate], of course.
+    - "You will have noticed by now, [wave]I\u2019m nothing like you.[wave]"
+    - I can [blue][bold]breathe[/bold][/blue], I can [blue][bold]swim[/bold][/blue],
+      I have my little and cozy shop.
+    - '[wave][red]Am I a monster or an angel to you?[/red][/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: Monster
     sentenceOptionB: Angel
@@ -1225,15 +1226,15 @@ MonoBehaviour:
     dialogueIndex: 16
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - "Fine, you don\u2019t have to believe me."
     - I can tell you another lie if you wish.
     - "That\u2019s why you crossed to this side."
-    - "Doesn\u2019t matter anymore anyway."
+    - "[wave]Doesn\u2019t matter anymore anyway.[/wave]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1293,16 +1294,16 @@ MonoBehaviour:
     dialogueIndex: 16
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - "Indeed, I haven\u2019t told a single lie yet."
-    - The ones who lied were the ones that came before you.
+    - "Indeed, [bold]I haven\u2019t told a single lie yet[/bold]."
+    - '[shake][red]The ones who lied were the ones that came before you.[/red][/shake]'
     - "Your kind truly never misses an oportunity\u2026 to make use of their fancy
       silver tongue."
-    - Never again.
+    - '[red][bold]Never again.[/bold][/red]'
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1362,15 +1363,16 @@ MonoBehaviour:
     dialogueIndex: 11
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - Me, guilty? Me?
-    - THEY wanted to use me. THEY thought they could control me.
-    - Your kind has always been the same.
-    - Fool enough to blame others for your own mistakes.
+    - '[shake][red]Me, guilty?[/red][/shake][br][bounce][red][bounce]Me?[/bold][/red][/bounce]'
+    - '[bounce][bold]THEY[/bold][/bounce] wanted to use me. [bounce][bold]THEY[/bounce][/bold]
+      thought they could control me.'
+    - '[shake][red]Your kind has always been the same.[/red][/shake]'
+    - Fool enough to blame others for [red][bold]your own mistakes[/bold][/red].
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1430,15 +1432,15 @@ MonoBehaviour:
     dialogueIndex: 9
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - Your parents have never supported your goals.
-    - And for the rest of the family, you are the black goat.
-    - Is that why you came here? Trying to make a point?
-    - "They won\u2019t notice that you are not there to explain."
+    - '[shake][red]Your parents have never supported your goals.[/red][/shake]'
+    - '[shake][red]And for the rest of the family, you are the black goat.[/red][/shake]'
+    - '[wave]Is that why you came here? Trying to make a point?[/wave]'
+    - "[shake][red][bold]They won\u2019t notice that you are not there to explain.[/bold][/red][/shake]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1498,15 +1500,15 @@ MonoBehaviour:
     dialogueIndex: 9
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - I told you already.
-    - "I don\u2019t think you can find a way out of here."
-    - This shop is broken, and so are you.
-    - When we remain together, what will you miss the most?
+    - '[smile]I told you already.[/smile]'
+    - "I don\u2019t think you can find [blue]a way out[/blue] of here."
+    - This shop is [fade]broken[/fade], and so are you.
+    - When we [red][bold]remain together[/bold][/red], what will you miss the most?
     isChoiceDialogue: 1
     sentenceOptionA: Family
     sentenceOptionB: Friends
@@ -1566,15 +1568,15 @@ MonoBehaviour:
     dialogueIndex: 12
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - "You do truly love me, don\u2019t you?"
-    - It would be easy to make you stop breathing.
-    - But I enjoy the company.
-    - And I love the way you suffocate.
+    - "[wave]You do truly love me, don\u2019t you?[/wave]"
+    - It would be easy to make you [red][bold]stop breathing[/bold][/red].
+    - '[wave]But I enjoy the company.[/wave]'
+    - '[wave]And I love the way you [red][bold]suffocate[/bold][/red].[/wave]'
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1634,15 +1636,15 @@ MonoBehaviour:
     dialogueIndex: 9
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - That group of weirdos with the same weird interests.
+    - That group of [wave][red]weirdos[/red][/wave] with the same weird interests.
     - They gave you the courage to explore these ruins.
-    - Did they think you were going to refuse, and mock you for it?
-    - Or did they just want to get rid of you?
+    - '[wave]Did they think you were going to refuse, and mock you for it?[/wave]'
+    - '[shake][red][bold]Or did they just want to get rid of you?[/bold][/red][/shake]'
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1778,15 +1780,15 @@ MonoBehaviour:
     dialogueIndex: 10
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - You are correct.
-    - "Mostly, at least. This place is real, what you feel isn\u2019t."
-    - "You see, that\u2019s because you are in my domain."
-    - And I assure you, it is truly real.
+    - "[bold]Mostly[/bold], at least. This place is real, [fade]what you feel isn\u2019t.[/fade]"
+    - "You see, that\u2019s because [shake][red][bold]you are in my domain[/bold][/red][/shake]."
+    - And I assure you, [italic]it is truly real[/italic].
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -2415,15 +2417,15 @@ MonoBehaviour:
     dialogueIndex: 15
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - Your thoughts were never enough.
+    - Your [shake]thoughts[/shake] were never enough.
     - "That\u2019s what you were always told."
     - Thought without action is pointless.
-    - Yet your only meaningful decision brought you here.
+    - Yet your only meaningful decision [red][bold]brought you here[/bold][/red].
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -2483,15 +2485,15 @@ MonoBehaviour:
     dialogueIndex: 12
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - Many would say so.
-    - "Mermaid, Siren, Naiad\u2026"
-    - These names that your kind give me are so boring.
-    - "I\u2019m merely a girl who likes to have fun."
+    - "[wave]Mermaid, Siren, Naiad\u2026[/wave]"
+    - These names that your kind give me are so [rotate]boring[/rotate].
+    - "[wave]I\u2019m merely a girl who likes to have fun.[/wave]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -2889,15 +2891,15 @@ MonoBehaviour:
     dialogueIndex: 13
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - Has this place met your expectations?
     - "My shop is not what it used to be\u2026"
-    - But I made sure we would have a great time regardless!
-    - Do you want to keep playing or stop?
+    - But I made sure we would have a [rotate]great time[/rotate] regardless!
+    - '[wave]Do you want to keep playing or stop?[/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: Play
     sentenceOptionB: Stop
@@ -2957,16 +2959,17 @@ MonoBehaviour:
     dialogueIndex: 14
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - "If you really didn\u2019t want to come here\u2026"
-    - "I\u2019m sure you have been desperately trying to leave."
-    - Your lungs should have failed a long time ago.
-    - "I\u2019m giving you some time to breathe."
-    - What does it make you feel?
+    - "I\u2019m sure you have been [red][bold]desperately[/bold][/red] trying to
+      leave."
+    - Your [shake][red]lungs[/red][/shake] should have failed a long time ago.
+    - "I\u2019m giving you some [wave][blue]time to breathe[/blue][/wave]."
+    - '[shake][bold]What does it make you feel?[/bold][/shake]'
     isChoiceDialogue: 1
     sentenceOptionA: Despair
     sentenceOptionB: Anger
@@ -3147,15 +3150,15 @@ MonoBehaviour:
     dialogueIndex: 11
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - Thank you, darling.
-    - It was their own arrogance that brought them down.
-    - "All they ever wanted was to attract people here\u2026"
-    - "They sure didn\u2019t consider the effects on themselves."
+    - Thank you, [wave]darling[/wave].
+    - It was their own [rotate]arrogance[/rotate] that brought them down.
+    - "All they ever wanted was to [red]attract people here[/red]\u2026"
+    - "[wave][red]They sure didn\u2019t consider the effects on themselves.[/red][/wave]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -3215,15 +3218,15 @@ MonoBehaviour:
     dialogueIndex: 13
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - Too bad for you, my dear.
-    - Until now, I have allowed you to roam these halls freely.
-    - But no more. You will run.
-    - And I will see you lose yourself again and again.
+    - Until now, I have allowed you to roam these halls [red][bold]freely[/bold][/red].
+    - But no more. [shake][red][bold]You will run.[/bold][/red][/shake]
+    - '[shake][red][bold]And I will see you lose yourself again and again.[/bold][/red][/shake]'
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -3321,15 +3324,16 @@ MonoBehaviour:
     dialogueIndex: 10
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - At this point you will have noticed that something is off.
-    - Corridors and corridors, and corridors galore.
-    - Are you truly running in circles, or is it the oxygen loss?
-    - Is this even real, or is it just in your mind?
+    - At this point you will have noticed that [fade]something is off[/fade].
+    - '[bounce]Corridors and corridors, and corridors galore.[/bounce]'
+    - '[wave]Are you truly [red]running in circles[/red], or is it the [blue]oxygen[/blue]
+      loss?[/wave]'
+    - '[fade]Is this even real, or is it just in your mind?[/fade]'
     isChoiceDialogue: 1
     sentenceOptionA: Real
     sentenceOptionB: Imagination
@@ -3389,15 +3393,15 @@ MonoBehaviour:
     dialogueIndex: 10
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - "Don\u2019t overestimate yourself, please."
-    - "You are cute and all\u2026"
-    - "\u2026But not creative enough to build something like this."
-    - It is true that you are losing yourself to delusion, though.
+    - "[wave]You are cute and all\u2026[/wave]"
+    - "[bounce]\u2026But not creative enough to build something like this.[/bounce]"
+    - It is true that you are [fade]losing yourself to delusion[/fade], though.
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -3628,14 +3632,14 @@ MonoBehaviour:
     dialogueIndex: 15
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - Your actions were never truly yours, though.
-    - Guided by your insecurities, trying to prove a point.
-    - "Now that you\u2019re here, do you think it was worth it?"
+    - '[wave]Your actions were never truly yours, though.[/wave]'
+    - Guided by your [bold]insecurities[/bold], trying to prove a point.
+    - "Now that you\u2019re here, [shake]do you think it was worth it?[/shake]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -3695,15 +3699,15 @@ MonoBehaviour:
     dialogueIndex: 11
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
     - "Some time ago you would\u2019ve found loot in the waters."
-    - I collected it all, but only when everyone was gone.
+    - I collected it all, but only when [shake][red]everyone was gone[/red][/shake].
     - "I didn\u2019t have anything to do with their disappearance\u2026"
-    - You believe me to be innocent, right?
+    - '[wave][red][bold]You believe me to be innocent, right?[/bold][/red][/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: Innocent
     sentenceOptionB: Guilty
@@ -3763,14 +3767,14 @@ MonoBehaviour:
     dialogueIndex: 14
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.04
+    effectsStrength: 5
+    minRangePitch: 0.8
     maxRangePitch: 1.1
     sentences:
-    - You are powerless here.
-    - "Your wrath won\u2019t amount to much\u2026."
-    - But I still challenge you to dare.
+    - '[wave]You are powerless here.[/wave]'
+    - "Your [red]wrath[/red] won\u2019t amount to much\u2026."
+    - '[shake][red]But I still challenge you to dare.[red][/shake]'
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
