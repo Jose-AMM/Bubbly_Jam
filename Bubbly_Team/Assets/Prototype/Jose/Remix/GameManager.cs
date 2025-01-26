@@ -15,11 +15,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject Player;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
+    public bool GlitchedMusic = false;
     private ManualCamera manualCamera;
     [SerializeField] private int CurrentMap = 1;
     [SerializeField] private GameObject[] checkpoints;
     [SerializeField] private int maxCheckpointsSize;
     [SerializeField] private int currentCheckpoint = 0;
+
+    [SerializeField] private float[] oxygenByLevel;
 
     [SerializeField] private BlackPanelLogic BlackPanel;
     [SerializeField] private List<GameObject> ShopPrefabs;
@@ -50,19 +53,32 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float SoundVolume = 1.0f;
+        
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            Camera.m_Lens.OrthographicSize = 5.5f;
+            SoundManager.Instance.PlaySound("AHOGANDOSE", SoundVolume);
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            Camera.m_Lens.OrthographicSize = 10;
+            SoundManager.Instance.PlaySound("DASH", SoundVolume);
         }
-
         if (Input.GetKey(KeyCode.Alpha3))
         {
-            Camera.m_Lens.OrthographicSize = 15;
+            SoundManager.Instance.PlaySound("GOLPE", 1.3f);
+        }
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            SoundManager.Instance.PlaySound("PECES", 1.4f);
+        }
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            SoundManager.Instance.PlaySound("RESPIRACION", SoundVolume);
+        }        
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+            SoundManager.Instance.PlaySound("SIRENA", 0.7f);
         }
     }
     public Vector2 GetPlayerPos(){
@@ -84,19 +100,15 @@ public class GameManager : MonoBehaviour
         SoundManager.Instance.PlaySound("Gasp", 0.2f);
     }
 
-    public void EnterShop(String PrefabName){
-        SoundManager.Instance.StopSounds();
-        SoundManager.Instance.SetVolume("Horror", 0.0f, 1.0f);
-        SoundManager.Instance.BeginClip("Goofy", 0.0f);
-        SoundManager.Instance.SetVolume("Goofy", 1.0f, 1.0f);
-        //SoundManager.Instance.PlaySound("ShopVFX", 1.0f);
+    public void EnterShop(String PrefabName)
+    {
+        SoundManager.Instance.EnterShop();
         StartCoroutine(LoadShop(PrefabName));
     }
 
-    public void ExitShop(){
-        SoundManager.Instance.StopSounds();
-        SoundManager.Instance.SetVolume("Horror", 1.0f, 1.0f);
-        SoundManager.Instance.SetVolume("Goofy", 0.0f, 1.0f);
+    public void ExitShop()
+    {
+        SoundManager.Instance.ExitShop();
         StartCoroutine(UnloadShop());
     }
 
@@ -248,6 +260,11 @@ public class GameManager : MonoBehaviour
     {
         TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
         Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
+    }
+
+    public void UpdateOxygenByLevel()
+    {
+        Player.GetComponent<OxygenBar>().SetStartLevelOxygen(oxygenByLevel[currentCheckpoint]);
     }
 
     public void NextMap()
