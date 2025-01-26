@@ -53,15 +53,16 @@ MonoBehaviour:
     dialogueIndex: 5
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - Fascinating, truly.
-    - "So are you running in circles? What\u2019s the point then?"
-    - You could stay with me instead. Or keep going.
-    - You will be able to breathe a little longer this time.
+    - '[wave]Fascinating, truly.[/wave]'
+    - "So are you running in circles?[br][bounce]What\u2019s the point then?[/bounce]"
+    - You could [shake][bold]stay with me[bold][/shake] instead. Or keep going.
+    - You will be able to [bold][blue]breathe a little longer[/blue][/bold] this
+      time.
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -121,15 +122,15 @@ MonoBehaviour:
     dialogueIndex: 4
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - Is that bravery or cowardice?
-    - "Do you hate yourself so much that you don\u2019t care?"
+    - Is that [bounce]bravery[/bounce] or [shake]cowardice[/shake]?
+    - "[shake][red]Do you hate yourself so much that you don\u2019t care?[/red][/shake]"
     - It might be easier that way, you know.
-    - The longing, without the pain.
+    - The longing, without the [red][bold]pain[/bold][/red].
     isChoiceDialogue: 0
     sentenceOptionA: The surface
     sentenceOptionB: I don't know
@@ -189,15 +190,15 @@ MonoBehaviour:
     dialogueIndex: 5
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - Did you find any exit yet?
-    - Certainly, it seems you came back to me.
-    - My cozy and colorful, quiet shop.
-    - Or is this a different place altogether?
+    - '[wave]Did you find any [red]exit[/red] yet?[/wave]'
+    - Certainly, it seems you [blue]came back to me[/blue].
+    - '[wave]My cozy and colorful, quiet shop.[/wave]'
+    - '[shake][bold]Or is this a different place altogether?[/bold][/shake]'
     isChoiceDialogue: 1
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1005,16 +1006,16 @@ MonoBehaviour:
     dialogueIndex: 5
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - Something incredibly odd is happening then.
-    - Since you and I keep meeting, right?
+    - Something incredibly [fade]odd[/fade] is happening then.
+    - Since you and I keep meeting, [wave]right?[/wave]
     - Perhaps you would like to stay together, I wonder.
-    - Or you can continue looking for a way out.
-    - "I warn you, it will get harder\u2026"
+    - Or you can continue looking for [blue]a way out[blue].
+    - "I warn you, [shake]it will get harder\u2026[/shake]"
     isChoiceDialogue: 0
     sentenceOptionA: Yes
     sentenceOptionB: No
@@ -1245,15 +1246,15 @@ MonoBehaviour:
     dialogueIndex: 7
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - So you think this is some type of joke.
-    - That your friends are messing with your head somehow.
-    - That you are free to explore these halls.
-    - You will learn the truth very soon.
+    - '[shake]So you think this is some type of [bold]joke[/bold].[/shake]'
+    - '[shake]That your friends are messing with your head somehow.[/shake]'
+    - '[shake]That you are [red][bold]free[/bold][/red] to explore these halls.[/shake]'
+    - You will learn [blue]the truth[/blue] very soon.
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -1351,15 +1352,15 @@ MonoBehaviour:
     dialogueIndex: 6
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - Just scavenging, right?
-    - Such a poor decision making, choosing to come here.
-    - In my opinion, air is the biggest treasure you can hope for.
-    - For creatures that need to breathe, that is.
+    - Just scavenging, [wave]right?[/wave]
+    - Such a poor decision making, [shake]choosing to come here.[/shake]
+    - In my opinion, [blue]air is the biggest treasure[/blue] you can hope for.
+    - For [fade]creatures that need to breathe[/fade], that is.
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -1724,15 +1725,15 @@ MonoBehaviour:
     dialogueIndex: 6
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
     - "So you ventured into the unknown\u2026"
-    - "\u2026Looking for strange creatures in the waters?"
-    - Strange creatures have lived around for years, indeed.
-    - I hope you get lucky enough to meet one.
+    - "[wave]\u2026Looking for strange creatures in the waters?[/wave]"
+    - '[fade]Strange creatures[/fade] have lived around for years, indeed.'
+    - '[wave]I hope you get lucky enough to meet one.[/wave]'
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -1792,15 +1793,16 @@ MonoBehaviour:
     dialogueIndex: 7
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - So how did you find this place?
-    - "I know why you\u2019re here, but its surprising nonetheless."
-    - "There\u2019s a specific method to visit us, but did you know?"
-    - Was it intentional or just an accident?
+    - So [wave]how did you find this place?[/wave]
+    - "I [red]know[/red] why you\u2019re here, but its [bounce]surprising nonetheless[/bounce]."
+    - "[wave]There\u2019s a [blue]specific method[/blue] to visit us, but did you
+      know?[/wave]"
+    - Was it [bounce]intentional[/bounce] or just an [shake]accident?[/shake]
     isChoiceDialogue: 1
     sentenceOptionA: Intentional
     sentenceOptionB: Accident
@@ -2033,15 +2035,15 @@ MonoBehaviour:
     dialogueIndex: 6
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - Did you buy anything yet?
-    - "Hah, I\u2019m just joking, you know."
-    - Every shop has been closed for a long time now.
-    - What picked your curiosity from this place, anyway?
+    - '[wave]Did you buy anything yet?[/wave]'
+    - "Hah, I\u2019m just [rotate]joking[/rotate], you know."
+    - Every shop has been [red]closed[/red] for a long time now.
+    - '[wave]What picked your curiosity from this place, anyway?[/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: Treasures
     sentenceOptionB: Creatures
@@ -2971,15 +2973,15 @@ MonoBehaviour:
     dialogueIndex: 4
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - You would remember everything about you.
-    - But you would be completely alone down here.
-    - I make for a good company, at least.
-    - "Let\u2019s talk about you when we next meet."
+    - You would [blue]remember[/blue] everything about you.
+    - But you would be [fade]completely alone[/fade] down here.
+    - '[bounce][red]I make for a good company, at least.[/red][/bounce]'
+    - "[wave]Let\u2019s talk about you when we next meet.[/wave]"
     isChoiceDialogue: 0
     sentenceOptionA: The surface
     sentenceOptionB: I don't know
@@ -3114,15 +3116,16 @@ MonoBehaviour:
     dialogueIndex: 7
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
     - That people who were with you taught you how.
-    - Looking for an empty place, an abandoned building, maybe.
-    - And then walking outside of the intended path.
-    - I hope you enjoy my domain, then.
+    - Looking for an [fade]empty place[/fade], an [fade]abandoned building[/fade],
+      maybe.
+    - And then walking outside of the [blue]intended path[/blue].
+    - '[wave]I hope you [red]enjoy my domain[/red], then.[/wave]'
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -3182,15 +3185,15 @@ MonoBehaviour:
     dialogueIndex: 8
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
-    effectsStrength: 1
-    minRangePitch: 1
+    talkTime: 0.05
+    effectsStrength: 2
+    minRangePitch: 0.95
     maxRangePitch: 1.1
     sentences:
-    - It looks like coming here affected your memory somehow.
-    - "Meeting me probably didn\u2019t help either, hah."
-    - "But be honest with me, if you kept forgetting things\u2026"
-    - Would you rather forget about yourself or about others?
+    - It looks like coming here affected your [fade]memory[/fade] somehow.
+    - "[wave]Meeting me probably didn\u2019t help either, hah.[/wave]"
+    - "But be honest with me, [bold]if you kept forgetting things[/bold]\u2026"
+    - '[shake]Would you rather forget about yourself or about others?[/shake]'
     isChoiceDialogue: 1
     sentenceOptionA: Myself
     sentenceOptionB: Others

@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 3929871614300104004, guid: e8cdc51104c4e9541a046e6b488e613d, type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: '[smile]I told you already.[/smile]'
-      objectReference: {fileID: 0}
     - target: {fileID: 5745656603466824048, guid: e8cdc51104c4e9541a046e6b488e613d, type: 3}
       propertyPath: m_IsActive
       value: 0
