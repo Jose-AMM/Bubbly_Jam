@@ -8,17 +8,28 @@ using System.Text;
 public class DialogueManager : MonoBehaviour
 {
     // Inspector fields
+    [Header("Dialogue Elements")]
+    public ChoicesTracker choiceTracker;
+
+    [Header("Dialogue Elements")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI optionAText;
+    public TextMeshProUGUI optionBText;
+    public GameObject continueButton;
+    public GameObject optionsButtons;
+
     public Animator dialogueBoxAnimator;
     public AudioSource characterSound;
-    public AudioClip letterSoundClip;
+
+    // Dialogue in parameters
+    private Queue<string> sentences;
+    private Dialogue currentDialogue;
 
     // Private state
-    private Queue<string> sentences;
-    private float letterDelay;
     private Coroutine typeSentenceCoroutine;
     private readonly List<Coroutine> activeAnimations = new List<Coroutine>();
+    private bool isLastSentence = false;
     private TMP_TextInfo cachedTextInfo;
     private List<Vector3[]> originalVertices = new List<Vector3[]>();
     private List<Color32[]> originalColors = new List<Color32[]>();
@@ -52,24 +63,84 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        currentDialogue = dialogue;
+
         dialogueBoxAnimator.SetBool("IsOpen", true);
-        nameText.text = dialogue.name;
-        letterDelay = dialogue.talkTime;
+        nameText.text = currentDialogue.name;
+        if (currentDialogue.isChoiceDialogue)
+        {
+            optionAText.text = currentDialogue.sentenceOptionA;
+            optionBText.text = currentDialogue.sentenceOptionB;
+        }
+        continueButton.SetActive(true);
+        optionsButtons.SetActive(false);
+
+        isLastSentence = false;
+
+        characterSound.clip = currentDialogue.letterSoundClip;
+
         sentences.Clear();
+
         foreach (string sentence in dialogue.sentences) sentences.Enqueue(sentence);
+
         DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
     {
+        continueButton.SetActive(false);
+        optionsButtons.SetActive(false);
+
         if (sentences.Count == 0)
         {
-            EndDialogue();
+            if (currentDialogue.answerTrigger)
+            {
+                currentDialogue.answerTrigger.TriggerDialogue();
+            }
+            else
+            {
+                EndDialogue();
+            }
             return;
+        }else if (sentences.Count == 1)
+        {
+            isLastSentence = true;
         }
 
         StopDialogueCoroutines();
         ProcessNextSentence(sentences.Dequeue());
+    }
+
+    public void ProcessChoiceOptionA()
+    {
+        Debug.Log("DialogueID: " + currentDialogue.dialogueID + "; Chose Option A: " +  optionAText.text);
+        choiceTracker.SetChoiceOutput(currentDialogue.dialogueID, true);
+        choiceTracker.SetChoiceOutput(currentDialogue.dialogueIndex, true);
+
+        if (currentDialogue.answerTriggerA)
+        {
+            currentDialogue.answerTriggerA.TriggerDialogue();
+        }
+        else
+        {
+            EndDialogue();
+        }
+    }
+
+    public void ProcessChoiceOptionB()
+    {
+        Debug.Log("DialogueID: " + currentDialogue.dialogueID + "; Chose Option B: " + optionBText.text);
+        choiceTracker.SetChoiceOutput(currentDialogue.dialogueID, false);
+        choiceTracker.SetChoiceOutput(currentDialogue.dialogueIndex, false);
+
+        if (currentDialogue.answerTriggerB)
+        {
+            currentDialogue.answerTriggerB.TriggerDialogue();
+        }
+        else
+        {
+            EndDialogue();
+        }
     }
 
     private void StopDialogueCoroutines()
@@ -98,6 +169,8 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         int visibleCharCount = 0;
 
+        //characterSound.loop = true;
+
         for (int i = 0; i < parsedData.formatted.Length; i++)
         {
             char c = parsedData.formatted[i];
@@ -117,8 +190,13 @@ public class DialogueManager : MonoBehaviour
 
             if (IsVisibleCharacter(c))
             {
+                //float randPitch = Random.Range(0.0f, 1.0f);
+                float randPitch = Random.Range(currentDialogue.minRangePitch, currentDialogue.maxRangePitch);
+                characterSound.pitch = randPitch;
+                characterSound.Play();
+
                 visibleCharCount++;
-                characterSound?.PlayOneShot(letterSoundClip);
+                //characterSound?.Play();
             }
 
             foreach (var anim in parsedData.animations)
@@ -129,7 +207,20 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(letterDelay);
+            yield return new WaitForSeconds(currentDialogue.talkTime);
+        }
+
+        characterSound.loop = false;
+
+        if (isLastSentence && currentDialogue.isChoiceDialogue)
+        {
+            continueButton.SetActive(false);
+            optionsButtons.SetActive(true);
+        }
+        else
+        {
+            continueButton.SetActive(true);
+            optionsButtons.SetActive(false);
         }
     }
 
@@ -230,7 +321,7 @@ public class DialogueManager : MonoBehaviour
 
                     case "rotate":
                         Vector3 center = (verts[vertexIndex] + verts[vertexIndex + 2]) / 2f;
-                        float angle = Mathf.Sin(Time.time * ROTATE_SPEED + visibleIndex) * 10f;
+                        float angle = Mathf.Sin(Time.time * ROTATE_SPEED + visibleIndex) * 10f * currentDialogue.effectsStrength;
                         for (int j = 0; j < 4; j++)
                         {
                             Vector3 vert = verts[vertexIndex + j];
@@ -240,7 +331,7 @@ public class DialogueManager : MonoBehaviour
                         break;
 
                     case "fade":
-                        float alpha = Mathf.Abs(Mathf.Sin(Time.time * FADE_SPEED + visibleIndex));
+                        float alpha = Mathf.Abs(Mathf.Sin(Time.time * FADE_SPEED + visibleIndex)) * currentDialogue.effectsStrength;
                         for (int j = 0; j < 4; j++)
                         {
                             Color32 c = colors[vertexIndex + j];
@@ -250,7 +341,7 @@ public class DialogueManager : MonoBehaviour
                         break;
 
                     default:
-                        Vector3 offset = GetAnimationOffset(animation.Type, visibleIndex - animation.StartIndex, timeOffset);
+                        Vector3 offset = GetAnimationOffset(animation.Type, visibleIndex - animation.StartIndex, timeOffset) * currentDialogue.effectsStrength;
                         for (int j = 0; j < 4; j++)
                             textInfo.meshInfo[materialIndex].vertices[vertexIndex + j] = verts[vertexIndex + j] + offset;
                         break;
@@ -258,7 +349,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             dialogueText.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-            hue += Time.deltaTime * RAINBOW_SPEED;
+            hue += Time.deltaTime * RAINBOW_SPEED * currentDialogue.effectsStrength;
             yield return null;
         }
     }
