@@ -7,18 +7,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     [SerializeField] private CinemachineVirtualCamera Camera;
     [SerializeField] private GameObject blackScreen;
-    [SerializeField] public GameObject Player; 
-    [SerializeField] private CinemachineVirtualCamera virtualCamera; 
+    [SerializeField] public GameObject Player;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private ManualCamera manualCamera;
 
-    public static GameManager Instance  { get; private set; }
+    public static GameManager Instance { get; private set; }
 
-    void Awake(){
-        
+    void Awake()
+    {
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -44,14 +43,17 @@ public class GameManager : MonoBehaviour
         {
             Camera.m_Lens.OrthographicSize = 5.5f;
         }
+
         if (Input.GetKey(KeyCode.Alpha2))
         {
             Camera.m_Lens.OrthographicSize = 10;
         }
+
         if (Input.GetKey(KeyCode.Alpha3))
         {
             Camera.m_Lens.OrthographicSize = 15;
         }
+
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             virtualCamera.Follow = null;
@@ -59,16 +61,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DisablePlayer(){
-
+    public void DisablePlayer()
+    {
         Player.GetComponent<PlayerMovement>().Stop();
         Player.GetComponent<JellyfishFloatSimple>().enabled = true;
+        Cursor.visible = true;
     }
 
-    public void EnablePlayer(){
+    public void EnablePlayer()
+    {
         Player.GetComponent<PlayerMovement>().AsNew();
         Player.GetComponent<JellyfishFloatSimple>().enabled = false;
         //Player.SetActive(true);
+        Cursor.visible = false;
     }
 
     public void MakeCameraFollowPlayer()
@@ -128,7 +133,7 @@ public class GameManager : MonoBehaviour
     public void StopAutoScroll()
     {
         virtualCamera.transform.position = Player.transform.position;
-        virtualCamera.Follow = Player.transform; 
+        virtualCamera.Follow = Player.transform;
         manualCamera.StopAutoScroll();
     }
 
