@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 987650971534728511}
   - component: {fileID: 8451826617885773164}
+  - component: {fileID: 2984987483505108696}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48,4 +49,67 @@ MonoBehaviour:
   blackScreen: {fileID: 0}
   Player: {fileID: 0}
   virtualCamera: {fileID: 0}
-  cameraSpeed: 10
+  checkpoints: []
+  BlackPanel: {fileID: 0}
+  ShopPrefabs: []
+--- !u!114 &2984987483505108696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104947593079639294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb849d71a6a7ba4ca89d741a52e2908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choices:
+  - choiceID: S1_LostExploring
+    choiceIndex: 1
+    chosenA: 0
+  - choiceID: S1_HomeRuins
+    choiceIndex: 2
+    chosenA: 0
+  - choiceID: S1_HomeTruth
+    choiceIndex: 3
+    chosenA: 0
+  - choiceID: S1_SurfaceUnkown
+    choiceIndex: 4
+    chosenA: 0
+  - choiceID: S2_YesNo
+    choiceIndex: 5
+    chosenA: 0
+  - choiceID: S2_TreasuresCreatures
+    choiceIndex: 6
+    chosenA: 0
+  - choiceID: S2_IntentionalAccident
+    choiceIndex: 7
+    chosenA: 0
+  - choiceID: S2_MyselfOthers
+    choiceIndex: 8
+    chosenA: 0
+  - choiceID: S3_FamilyFriends
+    choiceIndex: 9
+    chosenA: 0
+  - choiceID: S3_RealImagination
+    choiceIndex: 10
+    chosenA: 0
+  - choiceID: S3_InnocentGuilty
+    choiceIndex: 11
+    chosenA: 0
+  - choiceID: S3_MonsterAngel
+    choiceIndex: 12
+    chosenA: 0
+  - choiceID: S3_PlayStop
+    choiceIndex: 13
+    chosenA: 0
+  - choiceID: S3_DespairAnger
+    choiceIndex: 14
+    chosenA: 0
+  - choiceID: S3_ThoughtsActions
+    choiceIndex: 15
+    chosenA: 0
+  - choiceID: S3_LiarHonest
+    choiceIndex: 16
+    chosenA: 0

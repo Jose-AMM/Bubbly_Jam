@@ -23,4 +23,9 @@ public class JellyfishFloatSimple : MonoBehaviour
 
         transform.position = startPosition + new Vector3(lateralOffset, verticalOffset, 0f);
     }
+
+    void OnEnable()
+    {
+        startPosition = transform.position;
+    }
 }

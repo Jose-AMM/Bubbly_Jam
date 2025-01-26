@@ -8,8 +8,8 @@ using System.Text;
 public class DialogueManager : MonoBehaviour
 {
     // Inspector fields
-    [Header("Dialogue Elements")]
-    public ChoicesTracker choiceTracker;
+    //[Header("Dialogue Elements")]
+    private ChoicesTracker choiceTracker;
 
     [Header("Dialogue Elements")]
     public TextMeshProUGUI nameText;
@@ -79,6 +79,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        choiceTracker = GameManager.Instance.GetComponent<ChoicesTracker>();
         currentDialogue = dialogue;
 
         dialogueBoxAnimator.SetBool("IsOpen", true);
@@ -453,6 +454,13 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueBoxAnimator.SetBool("IsOpen", false);
         StopDialogueCoroutines();
+        StartCoroutine(End());
+    }
+
+    private IEnumerator End()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.NextMap();
     }
 
     private class TextAnimation
