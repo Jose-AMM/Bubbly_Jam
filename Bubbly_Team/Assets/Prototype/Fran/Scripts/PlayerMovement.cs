@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float boostVelocity = 1.0f;
     [SerializeField] private float boostDuration = 1.0f;
     [SerializeField] private AnimationCurve boostCurve;
+    [SerializeField] private GameObject boostLight;
+
+    private Light2D boostLight2D;
 
     private Vector2 _mouseWorldPosition = new Vector2();
     private Vector2 _playerToMouseDirection = new Vector2();
@@ -31,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
+
+        boostLight2D = boostLight.GetComponent<Light2D>();
     }
 
     void Update()
@@ -50,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
 
                 _boostTimeCurrent = 0.0f;
                 _boosting = true;
+
+                boostLight2D.intensity = 3.0f + boostCurve.Evaluate(1.0f / boostDuration);
             }
             else
             {
@@ -68,6 +76,9 @@ public class PlayerMovement : MonoBehaviour
                     swimVelocity, boostVelocity * 2.0f);
 
                 _rb.velocity = transform.right * _boostSpeedCurrent;
+
+                boostLight2D.intensity =
+                    3.0f + boostCurve.Evaluate((1.0f / boostDuration) - (_boostTimeCurrent / boostDuration));
 
                 _boostTimeCurrent += Time.deltaTime;
             }

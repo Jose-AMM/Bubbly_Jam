@@ -17,7 +17,6 @@ public class BoostAim : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        aimArrow = transform.Find("AimArrow").gameObject;
     }
 
     public void AimLine(Vector2 mouseWorldPosition, Vector2 playerToMouseDirection)

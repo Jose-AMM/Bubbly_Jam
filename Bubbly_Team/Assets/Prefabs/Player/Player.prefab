@@ -263,6 +263,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  boostLight: {fileID: 8612451413600640478}
 --- !u!114 &3082818047758661537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 0}
-  aimArrow: {fileID: 0}
+  aimArrow: {fileID: 2638699672163171540}
 --- !u!114 &290837237183819628
 MonoBehaviour:
   m_ObjectHideFlags: 0
