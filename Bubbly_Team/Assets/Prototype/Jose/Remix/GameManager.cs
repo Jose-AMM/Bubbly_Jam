@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Transactions;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,7 +15,11 @@ public class GameManager : MonoBehaviour
 
     private ManualCamera manualCamera;
 
-    public static GameManager Instance { get; private set; }
+    [SerializeField] private GameObject[] checkpoints;
+    private int maxCheckpointsSize;
+    private int currentCheckpoint = 0;
+
+    public static GameManager Instance  { get; private set; }
 
     void Awake()
     {
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         blackScreen.GetComponent<BlackPanelLogic>().StartFadeOut();
         manualCamera = virtualCamera.GetComponent<ManualCamera>();
+        maxCheckpointsSize = checkpoints.Length;
         DisablePlayer();
     }
 
@@ -53,11 +59,16 @@ public class GameManager : MonoBehaviour
         {
             Camera.m_Lens.OrthographicSize = 15;
         }
-
+        //Test TP Player
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             virtualCamera.Follow = null;
             manualCamera.StartShakeCamera();
+        }
+        //Test Change checkpoint
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            NextCheckpoint();
         }
     }
 
@@ -144,5 +155,35 @@ public class GameManager : MonoBehaviour
         Player.transform.position = pos;
 
         virtualCamera.OnTargetObjectWarped(Player.transform, delta);
+    }
+
+    public void NextCheckpoint()
+    {
+        if (currentCheckpoint + 1 >= maxCheckpointsSize)
+        {
+            currentCheckpoint = maxCheckpointsSize - 1;
+        }
+        else
+        {
+            currentCheckpoint++;
+        }
+    }
+
+    public void UpdateCheckpoint(int index)
+    {
+        if (index >= maxCheckpointsSize)
+        {
+            Debug.Log("Indice de checkpoint no valido");
+        }
+        else
+        {
+            currentCheckpoint = index;
+        }
+    }
+
+    public void RespawnPlayer()
+    {
+        TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
+        Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
     }
 }

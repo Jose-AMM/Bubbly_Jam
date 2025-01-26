@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class OxygenBar : MonoBehaviour
 {
-    private float _maxOxygen = 100;
+    [SerializeField] private float _maxOxygen = 100;
     [SerializeField] private float _currentOxygen;
     [SerializeField] private Image _oxygenBarFill;
     [SerializeField] private bool _isDrowning;
@@ -53,6 +53,10 @@ public class OxygenBar : MonoBehaviour
             _damageInContact = 0;
         }
         _invulnerabilityCD = Mathf.Clamp(_invulnerabilityCD - Time.deltaTime, 0f, _invulnerabilityTime);
+        if (_currentOxygen <= 0)
+        {
+            GameManager.Instance.RespawnPlayer();
+        }
         CheckOxygenLevel();
     }
 
@@ -128,5 +132,15 @@ public class OxygenBar : MonoBehaviour
     public void InContactWithEnemy(bool inContact)
     {
         _inContactWithEnemy = inContact;
+    }
+
+    public float GetMaxOxygen()
+    {
+        return _maxOxygen;
+    }
+
+    public float GetCurrentOxygen()
+    {
+        return _currentOxygen;
     }
 }
