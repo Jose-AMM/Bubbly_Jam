@@ -115,13 +115,13 @@ public class OxygenBar : MonoBehaviour
         {
             _oxygenLevel = OxygenLevel.Max;
             SoundManager.Instance.SetVolume("CHORD-TENSION", 0.0f, 0.0f);
-            SoundManager.Instance.SetVolume("ALARM", 0.0f, 0.0f);
+            SoundManager.Instance.SetVolume("ALARMA", 0.0f, 0.0f);
         }
         if (oxygenPercentage <= 1.0f && oxygenPercentage > 0.66f && _oxygenLevel != OxygenLevel.High)
         {
             _oxygenLevel = OxygenLevel.High;
             SoundManager.Instance.SetVolume("CHORD-TENSION", 0.0f, 0.0f);
-            SoundManager.Instance.SetVolume("ALARM", 0.0f, 0.0f);
+            SoundManager.Instance.SetVolume("ALARMA", 0.0f, 0.0f);
         }
         else if(oxygenPercentage <= 0.66f && oxygenPercentage > 0.33f  && _oxygenLevel != OxygenLevel.Medium)
         {
@@ -132,7 +132,7 @@ public class OxygenBar : MonoBehaviour
         {
             SoundManager.Instance.PlaySound("AHOGANDOSE", 1.0f);
             SoundManager.Instance.SetVolume("CHORD-TENSION", 1.0f, 0.0f);
-            SoundManager.Instance.SetVolume("ALARM", 0.5f, 0.0f);
+            SoundManager.Instance.SetVolume("ALARMA", 0.5f, 0.0f);
             _oxygenLevel = OxygenLevel.Low;
         } 
         else if (oxygenPercentage <= 0.0f  && _oxygenLevel != OxygenLevel.Zero){
