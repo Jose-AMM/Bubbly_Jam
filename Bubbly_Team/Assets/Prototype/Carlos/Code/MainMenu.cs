@@ -25,6 +25,8 @@ public class MainMenu : MonoBehaviour
             Debug.LogError("TargetPosition no asignado. Asigna un Transform en el inspector.");
             return;
         }
+        
+        Cursor.visible = false;
 
         StartCoroutine(FloatAndMove());
     }
@@ -46,7 +48,7 @@ public class MainMenu : MonoBehaviour
             // Movimiento ondulante lateral (zigzag).
             float lateralOffset = Mathf.Sin(elapsedTime * floatSpeedMM * 0.5f) * lateralAmplitudeMM;
 
-            // Lerp para moverse hacia la posición objetivo.
+            // Lerp para moverse hacia la posiciï¿½n objetivo.
             Vector3 newPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / floatDurationMM);
             newPosition.y += verticalOffset;
             newPosition.x += lateralOffset;
