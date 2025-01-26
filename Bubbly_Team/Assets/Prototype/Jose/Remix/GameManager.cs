@@ -87,6 +87,17 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void BlackScreenFadeOut()
+    {
+        blackScreen.GetComponent<BlackPanelLogic>().StartFadeOut();
+    }
+
+    public void BlackScreenFadeIn()
+    {
+        blackScreen.SetActive(true);
+        blackScreen.GetComponent<BlackPanelLogic>().StartFadeIn();
+    }
+
     public void MakeCameraFollowPlayer()
     {
         virtualCamera.Follow = Player.transform;
