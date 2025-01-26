@@ -54,37 +54,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float SoundVolume = 1.0f;
 
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            SoundManager.Instance.PlaySound("AHOGANDOSE", SoundVolume);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            SoundManager.Instance.PlaySound("DASH", SoundVolume);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            SoundManager.Instance.PlaySound("GOLPE", 1.3f);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            SoundManager.Instance.PlaySound("PECES", 1.4f);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha5))
-        {
-            SoundManager.Instance.PlaySound("RESPIRACION", SoundVolume);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha6))
-        {
-            SoundManager.Instance.PlaySound("SIRENA", 0.7f);
-        }
     }
 
     public Vector2 GetPlayerPos()
@@ -96,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         Player.GetComponent<PlayerMovement>().Stop();
         Player.GetComponent<JellyfishFloatSimple>().enabled = true;
+        Player.GetComponent<OxygenBar>().StopDrowning();
     }
 
     public void KillJellyfish()
@@ -308,6 +279,7 @@ public class GameManager : MonoBehaviour
     {
         Player.GetComponent<PlayerMovement>().AsNew();
         Player.GetComponent<JellyfishFloatSimple>().enabled = false;
+        Player.GetComponent<OxygenBar>().StartDrowning();
         //Player.SetActive(true);
     }
 
@@ -418,6 +390,10 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
+        if (currentCheckpoint >=3)
+        {
+            SoundManager.Instance.PlaySound("SIRENA", 0.7f);
+        }
         TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
         Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
     }
@@ -432,6 +408,7 @@ public class GameManager : MonoBehaviour
         //CurrentMap++;
         GlitchedMusicRatio = 0.33f * currentCheckpoint;
         NextCheckpoint();
+        UpdateOxygenByLevel();
         RespawnPlayer();
         ExitShop();
     }
