@@ -154,36 +154,26 @@ public class SoundManager : MonoBehaviour
 
     public void EnterShop()
     {
+        float GlitchedMusicRatio = GameManager.Instance.GlitchedMusicRatio;
         StopSounds();
         SetVolume("COMODIN", 0.0f, 0.0f);
         SetVolume("MUS-AGUA", 0.0f, 0.5f);
         SetVolume("MUS-AGUA-GLITCH", 0.0f, 0.5f);
-        if (GameManager.Instance.GlitchedMusic)
-        {
-            BeginClip("MUS-TIENDA-GLITCH", 0.0f);
-            SetVolume("MUS-TIENDA-GLITCH", 1.0f, 5.0f);
-        }
-        else
-        {
-            BeginClip("MUS-TIENDA", 0.0f);
-            SetVolume("MUS-TIENDA", 1.0f, 5.0f);
-        }
+        BeginClip("MUS-TIENDA-GLITCH", 0.0f);
+        SetVolume("MUS-TIENDA-GLITCH", GlitchedMusicRatio, 5.0f);
+        BeginClip("MUS-TIENDA", 0.0f);
+        SetVolume("MUS-TIENDA", 1.0f-GlitchedMusicRatio, 5.0f);
         PlaySound("PUERTA", 1.0f);
     }
 
     public void ExitShop()
     {
+        float GlitchedMusicRatio = GameManager.Instance.GlitchedMusicRatio;
         StopSounds();
         SetVolume("COMODIN", 1.0f, 0.0f);
         SetVolume("MUS-TIENDA", 0.0f, 1.0f);
         SetVolume("MUS-TIENDA-GLITCH", 0.0f, 1.0f);
-        if (GameManager.Instance.GlitchedMusic)
-        {
-            SetVolume("MUS-AGUA-GLITCH", 1.0f, 1.0f);
-        }
-        else
-        {
-            SetVolume("MUS-AGUA", 1.0f, 1.0f);
-        }
+        SetVolume("MUS-AGUA-GLITCH", GlitchedMusicRatio, 1.0f);
+        SetVolume("MUS-AGUA", (1.0f-GlitchedMusicRatio), 1.0f);
     }
 }

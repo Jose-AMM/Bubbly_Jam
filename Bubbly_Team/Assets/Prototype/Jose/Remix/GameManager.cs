@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject Player;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
-    public bool GlitchedMusic = false;
+    public float GlitchedMusicRatio = 0.0f;
     private ManualCamera manualCamera;
     [SerializeField] private int CurrentMap = 1;
     [SerializeField] private GameObject[] checkpoints;
