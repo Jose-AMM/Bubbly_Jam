@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         boostLight2D = boostLight.GetComponent<Light2D>();
     }
 
+    void Start()
+    {
+        GameManager.Instance.EnablePlayer();
+    }
+
     void Update()
     {
         _mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
