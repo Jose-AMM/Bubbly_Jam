@@ -6,6 +6,7 @@ using UnityEngine;
 public class BoostAim : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private GameObject aimArrowChild;
 
     private Vector2 _startPosition = new Vector2();
     private Vector2 _endPosition = new Vector2();
@@ -15,6 +16,7 @@ public class BoostAim : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        aimArrowChild = transform.Find("AimArrow").gameObject;
     }
 
     public void aimLine(Vector2 mouseWorldPosition, Vector2 playerToMouseDirection)
@@ -28,5 +30,12 @@ public class BoostAim : MonoBehaviour
         float lineLength = Mathf.Clamp(Vector2.Distance(_startPosition, _endPosition), 0, _lineMax);
         _endPosition = _startPosition + (playerToMouseDirection * lineLength);
         lineRenderer.SetPosition(1, _endPosition);
+    }
+
+    public void aimArrow(Vector2 mouseWorldPosition, float playerRotationDeg)
+    {
+        aimArrowChild.SetActive(true);
+        aimArrowChild.transform.position = mouseWorldPosition;
+        aimArrowChild.transform.rotation = Quaternion.Euler(0f, 0f, playerRotationDeg - 135.0f);
     }
 }
