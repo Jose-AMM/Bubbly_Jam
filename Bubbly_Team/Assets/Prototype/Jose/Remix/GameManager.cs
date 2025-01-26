@@ -83,6 +83,8 @@ public class GameManager : MonoBehaviour
     public void EnterShop(String PrefabName)
     {
         SoundManager.Instance.EnterShop();
+        SoundManager.Instance.SetVolume("CHORD-TENSION", 0.0f, 0.0f);
+        SoundManager.Instance.SetVolume("ALARMA", 0.0f, 0.0f);
         StartCoroutine(LoadShop(PrefabName));
     }
 
@@ -394,6 +396,11 @@ public class GameManager : MonoBehaviour
         if (currentCheckpoint >=3)
         {
             SoundManager.Instance.PlaySound("SIRENA", 0.7f);
+            StartAutoScroll();
+        }
+        else
+        {
+            StopAutoScroll();
         }
         TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
         Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
@@ -407,8 +414,8 @@ public class GameManager : MonoBehaviour
     public void NextMap()
     {
         //CurrentMap++;
-        GlitchedMusicRatio = 0.33f * currentCheckpoint;
         NextCheckpoint();
+        GlitchedMusicRatio = 0.33f * (currentCheckpoint);
         UpdateOxygenByLevel();
         RespawnPlayer();
         ExitShop();

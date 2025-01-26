@@ -28,4 +28,11 @@ public class Door : MonoBehaviour
             collider.enabled = false;
         }
     }
+
+    private IEnumerator Recover()
+    {
+        yield return new WaitForSeconds(60.0f);
+        var collider = gameObject.GetComponent(typeof(Collider2D)) as Collider2D;
+        collider.enabled = true;
+    } 
 }

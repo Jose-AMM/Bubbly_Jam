@@ -272,6 +272,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 328559969}
     - target: {fileID: 8451826617885773164, guid: 8cb2361ea120f284995fed8638444063, type: 3}
+      propertyPath: currentCheckpoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451826617885773164, guid: 8cb2361ea120f284995fed8638444063, type: 3}
       propertyPath: Interfaces.Array.size
       value: 0
       objectReference: {fileID: 0}
