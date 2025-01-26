@@ -57,9 +57,15 @@ public class OxygenBar : MonoBehaviour
         _invulnerabilityCD = Mathf.Clamp(_invulnerabilityCD - Time.deltaTime, 0f, _invulnerabilityTime);
         if (_currentOxygen <= 0)
         {
-            GameManager.Instance.RespawnPlayer();
+            Respawn();
         }
         CheckOxygenLevel();
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1.0f);
+        GameManager.Instance.RespawnPlayer();
     }
 
     void UpdateOxygen()
@@ -117,11 +123,12 @@ public class OxygenBar : MonoBehaviour
         }
         else if (oxygenPercentage <= 0.33f && oxygenPercentage > 0.0f  && _oxygenLevel != OxygenLevel.Low)
         {
+            SoundManager.Instance.PlaySound("AHOGANDOSE", 1.0f);
             _oxygenLevel = OxygenLevel.Low;
         } 
         else if (oxygenPercentage == 0.0f  && _oxygenLevel != OxygenLevel.Zero){
             _oxygenLevel = OxygenLevel.Zero;
-            SoundManager.Instance.PlaySound("Drown", 0.2f);
+            SoundManager.Instance.PlaySound("AHOGANDOSE", 1.0f);
         }
     }
 
@@ -129,7 +136,7 @@ public class OxygenBar : MonoBehaviour
     {
         if(_invulnerabilityCD <= 0)
         {
-            SoundManager.Instance.PlaySound("Ouch", 1.0f);
+            SoundManager.Instance.PlaySound("GOLPE", 1.0f);
             RemoveOxygen(damageAmount);
             _invulnerabilityCD = _invulnerabilityTime;
             if(damageAmount > _damageInContact)

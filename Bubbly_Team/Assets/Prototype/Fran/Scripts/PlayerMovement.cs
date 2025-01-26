@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Mouse.current.leftButton.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
             {
+                SoundManager.Instance.PlaySound("DASH", 1.0f);
                 _boostSpeedCurrent = boostVelocity *
                                      Mathf.Clamp(boostCurve.Evaluate(0.0f), swimVelocity, boostVelocity * 2.0f);
                 _rb.velocity = transform.right * _boostSpeedCurrent;
