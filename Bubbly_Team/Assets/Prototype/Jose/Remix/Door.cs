@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    public GameObject InterfacePanel;
-    //public Scene SceneToAdd;
 
+    public String PrefabName;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +23,7 @@ public class Door : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log(other.gameObject.name + " triggering door");
         if (other.gameObject.name == "Player"){
-            InterfacePanel.SetActive(true);
-
-            GameManager.Instance.BlackScreenFadeIn();
-
+            GameManager.Instance.EnterShop(PrefabName);
             Destroy(gameObject);
         }
     }
