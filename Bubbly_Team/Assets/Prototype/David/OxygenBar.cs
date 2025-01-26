@@ -149,6 +149,13 @@ public class OxygenBar : MonoBehaviour
         return _maxOxygen;
     }
 
+    public void SetStartLevelOxygen(float amount)
+    {
+        _maxOxygen = amount;
+        _currentOxygen = _maxOxygen;
+        UpdateOxygen();
+    }
+
     public float GetCurrentOxygen()
     {
         return _currentOxygen;
