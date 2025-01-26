@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (_canRotate)
         {
@@ -99,12 +99,17 @@ public class PlayerMovement : MonoBehaviour
 
             _playerRotationDeg = Mathf.Atan2(_playerToMouseDirection.y, _playerToMouseDirection.x) * Mathf.Rad2Deg;
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                Quaternion.Euler(0f, 0f, _playerRotationDeg), rotateVelocity * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, _playerRotationDeg);
+            // transform.rotation = Quaternion.RotateTowards(transform.rotation,
+            //    Quaternion.Euler(0f, 0f, _playerRotationDeg), rotateVelocity * Time.deltaTime);
 
             gameObject.GetComponent<BoostAim>().AimLine(_mouseWorldPosition, _playerToMouseDirection);
             gameObject.GetComponent<BoostAim>().AimArrow(_mouseWorldPosition, _playerRotationDeg);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
     }
 
     public void Stop()
