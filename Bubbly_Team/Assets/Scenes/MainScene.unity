@@ -1072,6 +1072,14 @@ PrefabInstance:
       propertyPath: targetPosition
       value: 
       objectReference: {fileID: 1427017287}
+    - target: {fileID: 7680022650278654766, guid: 53ef2bcdbd3b54649b839019b7aac973, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193442263949891618, guid: 53ef2bcdbd3b54649b839019b7aac973, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
