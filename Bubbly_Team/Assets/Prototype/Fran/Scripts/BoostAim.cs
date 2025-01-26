@@ -10,7 +10,7 @@ public class BoostAim : MonoBehaviour
     private Vector2 _startPosition = new Vector2();
     private Vector2 _endPosition = new Vector2();
 
-    private float _lineMax = 1.0f;
+    private float _lineMax = 10.0f;
 
     private void Awake()
     {
