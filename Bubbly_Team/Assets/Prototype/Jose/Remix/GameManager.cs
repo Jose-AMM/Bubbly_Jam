@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private ManualCamera manualCamera;
-
+    [SerializeField] private int CurrentMap = 1;
     [SerializeField] private GameObject[] checkpoints;
     private int maxCheckpointsSize;
     private int currentCheckpoint = 0;
@@ -88,11 +88,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadShop(PrefabName));
     }
 
-    public void ExitShop(String PrefabName){
+    public void ExitShop(){
         SoundManager.Instance.StopSounds();
         SoundManager.Instance.SetVolume("Horror", 1.0f, 1.0f);
         SoundManager.Instance.SetVolume("Goofy", 0.0f, 1.0f);
-        StartCoroutine(UnloadShop(PrefabName));
+        StartCoroutine(UnloadShop());
     }
 
     IEnumerator LoadShop(String PrefabName){
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start dialogue");
     }
 
-    IEnumerator UnloadShop(String PrefabName)
+    public IEnumerator UnloadShop()
     {
         BlackPanel.gameObject.SetActive(true);
         yield return new WaitForSeconds(0);
@@ -243,5 +243,13 @@ public class GameManager : MonoBehaviour
     {
         TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
         Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
+    }
+
+    public void NextMap()
+    {
+        //CurrentMap++;
+        NextCheckpoint();
+        RespawnPlayer();
+        ExitShop();
     }
 }
