@@ -8,16 +8,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background-2
+  - Background-1
+  - Baseground-1
+  - Baseground-2
+  - Foreground-1
+  - Foreground-2
+  - Unlit
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background-2
+    uniqueID: 3647381589
+    locked: 0
+  - name: Background-1
+    uniqueID: 3406589009
+    locked: 0
+  - name: Baseground-2
+    uniqueID: 1724504043
+    locked: 0
+  - name: Baseground-1
+    uniqueID: 976937743
+    locked: 0
+  - name: Foreground-2
+    uniqueID: 3179673887
+    locked: 0
+  - name: Foreground-1
+    uniqueID: 1817380045
     locked: 0

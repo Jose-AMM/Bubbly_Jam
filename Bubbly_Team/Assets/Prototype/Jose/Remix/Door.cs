@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -26,5 +27,4 @@ public class Door : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

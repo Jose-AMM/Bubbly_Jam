@@ -11,9 +11,14 @@ public class BlackPanelLogic : MonoBehaviour
     public bool startActivated = false;
     public float fadeDuration = 1.0f;
 
-    private void Start()
+    private void Awake()
     {
         fadePanel = GetComponent<Image>();
+    }
+
+
+    private void Start()
+    {
         Color startColor = fadePanel.color;
 
         if (startActivated)

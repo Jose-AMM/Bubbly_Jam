@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1059535992793310628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2871990172772046411}
+  - component: {fileID: 5887397792642932750}
+  - component: {fileID: 8943636976867942519}
+  - component: {fileID: 2193134628464603456}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2871990172772046411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059535992793310628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5887397792642932750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059535992793310628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5d7a43f0c04df7479e9a0405b3e3e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceTracker: {fileID: 2193134628464603456}
+  nameText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  optionAText: {fileID: 0}
+  optionBText: {fileID: 0}
+  continueButton: {fileID: 0}
+  optionsButtons: {fileID: 0}
+  dialogueBoxAnimator: {fileID: 0}
+  characterSound: {fileID: 8943636976867942519}
+  creepySmile: {fileID: 0}
+--- !u!82 &8943636976867942519
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059535992793310628}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &2193134628464603456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059535992793310628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb849d71a6a7ba4ca89d741a52e2908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choices:
+  - choiceID: S1_LostExploring
+    choiceIndex: 1
+    chosenA: 0
+  - choiceID: S1_HomeRuins
+    choiceIndex: 2
+    chosenA: 0
+  - choiceID: S1_HomeTruth
+    choiceIndex: 3
+    chosenA: 0
+  - choiceID: S1_SurfaceUnkown
+    choiceIndex: 4
+    chosenA: 0
+  - choiceID: S2_YesNo
+    choiceIndex: 5
+    chosenA: 0
+  - choiceID: S2_TreasuresCreatures
+    choiceIndex: 6
+    chosenA: 0
+  - choiceID: S2_IntentionalAccident
+    choiceIndex: 7
+    chosenA: 0
+  - choiceID: S2_MyselfOthers
+    choiceIndex: 8
+    chosenA: 0
+  - choiceID: S3_FamilyFriends
+    choiceIndex: 9
+    chosenA: 0
+  - choiceID: S3_RealImagination
+    choiceIndex: 10
+    chosenA: 0
+  - choiceID: S3_InnocentGuilty
+    choiceIndex: 11
+    chosenA: 0
+  - choiceID: S3_MonsterAngel
+    choiceIndex: 12
+    chosenA: 0
+  - choiceID: S3_PlayStop
+    choiceIndex: 13
+    chosenA: 0
+  - choiceID: S3_DespairAnger
+    choiceIndex: 14
+    chosenA: 0
+  - choiceID: S3_ThoughtsActions
+    choiceIndex: 15
+    chosenA: 0
+  - choiceID: S3_LiarHonest
+    choiceIndex: 16
+    chosenA: 0

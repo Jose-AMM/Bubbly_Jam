@@ -56,11 +56,12 @@ public class MainMenu : MonoBehaviour
             yield return null;
         }
 
-        // Asegúrate de que el menú termina exactamente en la posición objetivo.
         gameObject.transform.position = endPosition;
 
-        // Aquí puedes añadir cualquier lógica adicional, como cargar una nueva escena.
-        Debug.Log("Animation Complete. Ready to start the game!");
+        //Debug.Log("Animation Complete. Ready to start the game!");
+
+        GameManager.Instance.EnablePlayer();
+        GameManager.Instance.MakeCameraFollowPlayer();
     }
 
 
