@@ -49,7 +49,12 @@ MonoBehaviour:
   blackScreen: {fileID: 0}
   Player: {fileID: 0}
   virtualCamera: {fileID: 0}
+  GlitchedMusicRatio: 0
+  CurrentMap: 1
   checkpoints: []
+  maxCheckpointsSize: 0
+  currentCheckpoint: 0
+  oxygenByLevel: []
   BlackPanel: {fileID: 0}
   ShopPrefabs: []
 --- !u!114 &2984987483505108696

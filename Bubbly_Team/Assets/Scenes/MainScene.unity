@@ -1343,18 +1343,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1384945393065562627, guid: 41e57809574592342971b990c57c1397, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384945393065562627, guid: 41e57809574592342971b990c57c1397, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384945393065562627, guid: 41e57809574592342971b990c57c1397, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384945393065562627, guid: 41e57809574592342971b990c57c1397, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.1
       objectReference: {fileID: 0}
@@ -1397,10 +1385,6 @@ PrefabInstance:
     - target: {fileID: 3131248661264251283, guid: 41e57809574592342971b990c57c1397, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3698306714602619254, guid: 41e57809574592342971b990c57c1397, type: 3}
-      propertyPath: _maxOxygen
-      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
