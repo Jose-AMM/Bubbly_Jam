@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Transactions;
 using Cinemachine;
@@ -146,6 +147,75 @@ public class GameManager : MonoBehaviour
         DialogueTrigger[] allDialogues;
         ChoicesTracker choicesTracker = GetComponent<ChoicesTracker>();
 
+        if (InstantiatedShop.name.Contains("SHOP1"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (t.dialogue.dialogueIndex == 1)
+                {
+                    t.TriggerDialogue();
+                }
+            }
+        } else if (InstantiatedShop.name.Contains("SHOP2"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (choicesTracker.FindChoiceOutput(1))
+                {
+                    // trigger el 5
+                    if (t.dialogue.dialogueIndex == 5)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+                else
+                {
+                    // trigger el 6
+                    if (t.dialogue.dialogueIndex == 6)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+            }
+
+        } else if (InstantiatedShop.name.Contains("SHOP3"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (choicesTracker.FindChoiceOutput(5))
+                {
+                    // trigger el 9
+                    if (t.dialogue.dialogueIndex == 9)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+                else
+                {
+                    // trigger el 10
+                    if (t.dialogue.dialogueIndex == 10)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+            }
+        }
+        else if (InstantiatedShop.name.Contains("SHOP4"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (t.dialogue.dialogueIndex == 18)
+                {
+                    t.TriggerDialogue();
+                }
+            }
+        }
+
+        /*
         switch (InstantiatedShop.name)
         {
             case "SHOP1":
@@ -218,7 +288,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     public IEnumerator UnloadShop()
