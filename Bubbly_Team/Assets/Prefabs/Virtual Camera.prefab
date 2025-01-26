@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15313d49005898c4bbb75cb486490df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 5
+  cameraSpeed: 3
   deadZoneY: 1
   shakeAmount: 0.3
   shakeTime: 1

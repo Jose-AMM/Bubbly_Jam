@@ -71,14 +71,7 @@ public class ManualCamera : MonoBehaviour
         }
 
         //Testing Camera
-        if (Input.GetKey(KeyCode.A))
-        {
-            GameManager.Instance.StartAutoScroll();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            GameManager.Instance.StopAutoScroll();
-        }
+
     }
 
     public void SetCameraSpeed(float speed)
