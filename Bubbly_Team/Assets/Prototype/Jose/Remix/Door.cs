@@ -24,7 +24,8 @@ public class Door : MonoBehaviour
         Debug.Log(other.gameObject.name + " triggering door");
         if (other.gameObject.name == "Player"){
             GameManager.Instance.EnterShop(PrefabName);
-            Destroy(gameObject);
+            var collider = gameObject.GetComponent(typeof(Collider2D)) as Collider2D;
+            collider.enabled = false;
         }
     }
 }
