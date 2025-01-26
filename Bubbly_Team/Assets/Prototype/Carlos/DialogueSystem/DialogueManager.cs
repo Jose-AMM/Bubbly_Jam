@@ -95,7 +95,7 @@ public class DialogueManager : MonoBehaviour
         isLastSentence = false;
 
         characterSound.clip = currentDialogue.letterSoundClip;
-
+        characterSound.volume = 0.7f;
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences) sentences.Enqueue(sentence);

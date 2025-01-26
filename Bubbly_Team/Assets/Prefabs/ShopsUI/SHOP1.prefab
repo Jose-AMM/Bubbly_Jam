@@ -1036,8 +1036,8 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - Oooh, you poor thing!
-    - Where are you trying to get?[br]Maybe I can guide you.
+    - '[bounce]Oooooh[/bounce], you poor thing!'
+    - '[wave]Where are you trying to get?[/wave][br]Maybe I can guide you.'
     isChoiceDialogue: 1
     sentenceOptionA: Home
     sentenceOptionB: Truth
@@ -1421,14 +1421,14 @@ MonoBehaviour:
     dialogueIndex: 1
     name: Merchant
     letterSoundClip: {fileID: 8300000, guid: e76f9c82ba9ae544abc38d1aff220c59, type: 3}
-    talkTime: 0.07
+    talkTime: 0.05
     effectsStrength: 1
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - Welcome!
-    - It has been a [smile]long time[/smile] since we last had a[br]customer...
-    - How can I help you?
+    - '[wave][rainbow]Welcome![/rainbow][/wave]'
+    - It has been a [bold]long time[/bold] since we last had a[br][bounce]customer[/bounce]...
+    - '[wave]How can I help you?[/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: I'm lost
     sentenceOptionB: I'm exploring
@@ -1759,9 +1759,9 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - "Must have been such a journey\u2026"
-    - "It\u2019s not easy getting here these days."
-    - It feels almost as if we were meant to meet.
+    - "[shake]Must have been such a journey\u2026[/shake]"
+    - "It\u2019s not [italic]easy[/italic] getting here these days."
+    - It feels almost as if [wave]we were meant to meet[/wave].
     isChoiceDialogue: 0
     sentenceOptionA: The surface
     sentenceOptionB: I don't know
@@ -1826,9 +1826,9 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - "Really? That\u2019s exciting."
+    - "Really? That\u2019s [bounce]exciting[/bounce]."
     - "There isn\u2019t much left to explore here, though."
-    - Where do you come from?
+    - '[wave]Where do you come from?[/wave]'
     isChoiceDialogue: 1
     sentenceOptionA: The surface
     sentenceOptionB: I don't know
@@ -1893,8 +1893,8 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - "That\u2019s\u2026\nA remarcable ambition on your part."
-    - Perhaps you are not as lost as you think then.
+    - "[shake]That\u2019s\u2026\nA remarcable ambition on your part.[/shake]"
+    - Perhaps you are not as [fade]lost[/fade] as you think then.
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -1959,8 +1959,8 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - Oooh, you poor thing!
-    - Where are you trying to get?[br]Maybe I can guide you.
+    - '[bounce]Oooooh[/bounce], you poor thing!'
+    - '[wave]Where are you trying to get?[/wave][br]Maybe I can guide you.'
     isChoiceDialogue: 1
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -2026,8 +2026,8 @@ MonoBehaviour:
     maxRangePitch: 1.1
     sentences:
     - I saw you coming from the shore.
-    - Are you one of those trying to learn about the ruins?
-    - You know, you are not the first visitor here.
+    - Are you one of those trying to learn about the [fade]ruins[/fade]?
+    - You know, you are [bold][blue]not the first[/blue][/bold] visitor here.
     isChoiceDialogue: 0
     sentenceOptionA: The surface
     sentenceOptionB: I don't know
@@ -2456,8 +2456,9 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - If you keep going forward you may find a way back home.
-    - But be careful, this can be a strange place sometimes.
+    - If you keep going [bold][blue]forward[/blue][/bold] you may find a way back
+      [italic]home[/italic].
+    - But [shake]be careful[/shake], this can be a [fade]strange[/fade] place sometimes.
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins
@@ -2656,9 +2657,11 @@ MonoBehaviour:
     minRangePitch: 1
     maxRangePitch: 1.1
     sentences:
-    - Well, you found them already.
-    - "I guess you didn\u2019t expect a shop down here, did you?"
-    - "You can look around, but don\u2019t touch anything, please."
+    - Well, [bounce]you found them already[/bounce].
+    - "I guess you [italic]didn\u2019t[/italic] expect a shop down here, [wave]did
+      you?[/wave]"
+    - "You can look around, but [red][bold]don\u2019t touch anything[/bold][/red],
+      please."
     isChoiceDialogue: 0
     sentenceOptionA: Home
     sentenceOptionB: Ruins

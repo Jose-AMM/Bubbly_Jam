@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxCheckpointsSize;
     [SerializeField] private int currentCheckpoint = 0;
 
+    [SerializeField] private float[] oxygenByLevel;
+
     [SerializeField] private BlackPanelLogic BlackPanel;
     [SerializeField] private List<GameObject> ShopPrefabs;
     private GameObject InstantiatedShop;
@@ -258,6 +260,11 @@ public class GameManager : MonoBehaviour
     {
         TPPlayerToPosition(checkpoints[currentCheckpoint].transform.position);
         Player.GetComponent<OxygenBar>().AddOxygen(Player.GetComponent<OxygenBar>().GetMaxOxygen());
+    }
+
+    public void UpdateOxygenByLevel()
+    {
+        Player.GetComponent<OxygenBar>().SetStartLevelOxygen(oxygenByLevel[currentCheckpoint]);
     }
 
     public void NextMap()
