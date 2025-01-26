@@ -312,9 +312,9 @@ public class GameManager : MonoBehaviour
 
     public void NextCheckpoint()
     {
-        if (currentCheckpoint + 1 >= maxCheckpointsSize)
+        if (currentCheckpoint+1 >= maxCheckpointsSize)
         {
-            currentCheckpoint = maxCheckpointsSize - 1;
+            currentCheckpoint = 0;
         }
         else
         {
@@ -348,6 +348,7 @@ public class GameManager : MonoBehaviour
     public void NextMap()
     {
         //CurrentMap++;
+        GlitchedMusicRatio = 0.33f * currentCheckpoint;
         NextCheckpoint();
         RespawnPlayer();
         ExitShop();
