@@ -15,15 +15,17 @@ public class OxygenBar : MonoBehaviour
     [SerializeField] private float _invulnerabilityTime;
     private float _invulnerabilityCD;
 
-    //Variables daño por contacto
+    //Variables daï¿½o por contacto
     private bool _inContactWithEnemy;
     private float _damageInContact;
 
     public enum OxygenLevel
     {
+        Max,
         High,
         Medium,
         Low,
+        Zero,
     }
 
     public OxygenLevel _oxygenLevel;
@@ -78,7 +80,7 @@ public class OxygenBar : MonoBehaviour
         UpdateOxygen();
     }
 
-    void StartDrowning()
+    public void StartDrowning()
     {
         if (!_isDrowning)
         {
@@ -86,7 +88,7 @@ public class OxygenBar : MonoBehaviour
         }
     }
 
-    void StopDrowning()
+    public void StopDrowning()
     {
         if (_isDrowning)
         {
@@ -98,17 +100,24 @@ public class OxygenBar : MonoBehaviour
     {
         float oxygenPercentage = _currentOxygen / _maxOxygen;
 
-        if (oxygenPercentage > 0.66f)
+        if (oxygenPercentage == 1.0f && _oxygenLevel != OxygenLevel.Max){
+            _oxygenLevel = OxygenLevel.Max;
+        }
+        if (oxygenPercentage <= 1.0f && oxygenPercentage > 0.66f && _oxygenLevel != OxygenLevel.High)
         {
             _oxygenLevel = OxygenLevel.High;
         }
-        else if(oxygenPercentage > 0.33f)
+        else if(oxygenPercentage <= 0.66f && oxygenPercentage > 0.33f  && _oxygenLevel != OxygenLevel.Medium)
         {
             _oxygenLevel = OxygenLevel.Medium;
         }
-        else
+        else if (oxygenPercentage <= 0.33f && oxygenPercentage > 0.0f  && _oxygenLevel != OxygenLevel.Low)
         {
             _oxygenLevel = OxygenLevel.Low;
+        } 
+        else if (oxygenPercentage == 0.0f  && _oxygenLevel != OxygenLevel.Zero){
+            _oxygenLevel = OxygenLevel.Zero;
+            SoundManager.Instance.PlaySound("Drown", 0.2f);
         }
     }
 
@@ -116,6 +125,7 @@ public class OxygenBar : MonoBehaviour
     {
         if(_invulnerabilityCD <= 0)
         {
+            SoundManager.Instance.PlaySound("Ouch", 1.0f);
             RemoveOxygen(damageAmount);
             _invulnerabilityCD = _invulnerabilityTime;
             if(damageAmount > _damageInContact)
