@@ -6,26 +6,26 @@ public class SpriteGlitchAnim : MonoBehaviour
 {
     [Header("Sprites Configuration")]
     public SpriteRenderer spriteRenderer; // SpriteRenderer del objeto
-    public Sprite baseSprite; // Sprite base (estático)
+    public Sprite baseSprite; // Sprite base (estï¿½tico)
     public List<Sprite> glitchSprites; // Lista de sprites para el efecto glitch
 
     [Header("Glitch Settings")]
-    [Tooltip("Duración mínima entre cambios de sprite.")]
+    [Tooltip("Duraciï¿½n mï¿½nima entre cambios de sprite.")]
     public float minGlitchInterval = 0.05f;
 
-    [Tooltip("Duración máxima entre cambios de sprite.")]
+    [Tooltip("Duraciï¿½n mï¿½xima entre cambios de sprite.")]
     public float maxGlitchInterval = 0.2f;
 
-    [Tooltip("Duración del efecto glitch en segundos.")]
+    [Tooltip("Duraciï¿½n del efecto glitch en segundos.")]
     public float glitchDuration = 1.0f;
 
-    [Tooltip("Radio máximo para el offset aleatorio del glitch.")]
+    [Tooltip("Radio mï¿½ximo para el offset aleatorio del glitch.")]
     public float maxOffsetRadius = 0.5f;
 
-    [Tooltip("Tiempo mínimo entre glitches automáticos.")]
+    [Tooltip("Tiempo mï¿½nimo entre glitches automï¿½ticos.")]
     public float minTimeBetweenGlitches = 2.0f;
 
-    [Tooltip("Tiempo máximo entre glitches automáticos.")]
+    [Tooltip("Tiempo mï¿½ximo entre glitches automï¿½ticos.")]
     public float maxTimeBetweenGlitches = 5.0f;
 
     private Transform spriteTransform;
@@ -98,7 +98,7 @@ public class SpriteGlitchAnim : MonoBehaviour
             elapsedTime += waitTime;
         }
 
-        // Restaurar el sprite base y la posición original al finalizar
+        // Restaurar el sprite base y la posiciï¿½n original al finalizar
         spriteRenderer.sprite = baseSprite;
         spriteTransform.localPosition = originalPosition;
         isGlitching = false;
