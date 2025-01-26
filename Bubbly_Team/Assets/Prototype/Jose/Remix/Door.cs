@@ -26,6 +26,7 @@ public class Door : MonoBehaviour
             GameManager.Instance.EnterShop(PrefabName);
             var collider = gameObject.GetComponent(typeof(Collider2D)) as Collider2D;
             collider.enabled = false;
+            StartCoroutine(Recover());
         }
     }
 
