@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     private ManualCamera manualCamera;
     [SerializeField] private int CurrentMap = 1;
     [SerializeField] private GameObject[] checkpoints;
-    private int maxCheckpointsSize;
-    private int currentCheckpoint = 0;
+    [SerializeField] private int maxCheckpointsSize;
+    [SerializeField] private int currentCheckpoint = 0;
 
     [SerializeField] private BlackPanelLogic BlackPanel;
     [SerializeField] private List<GameObject> ShopPrefabs;
@@ -72,6 +72,11 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<PlayerMovement>().Stop();
         Player.GetComponent<JellyfishFloatSimple>().enabled = true;
         Cursor.visible = true;
+    }
+
+    public void KillJellyfish()
+    {
+        Player.GetComponent<JellyfishFloatSimple>().enabled = false;
     }
 
     public void GetOxygen(){
@@ -208,10 +213,10 @@ public class GameManager : MonoBehaviour
 
     public void TPPlayerToPosition(Vector3 pos)
     {
+        KillJellyfish();
         Vector3 playerPos = Player.transform.position;
         Vector3 delta = pos - playerPos;
         Player.transform.position = pos;
-
         virtualCamera.OnTargetObjectWarped(Player.transform, delta);
     }
 
