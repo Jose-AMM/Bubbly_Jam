@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
                 _boostTimeCurrent = 0.0f;
                 _boosting = true;
 
-                boostLight2D.intensity = 3.0f + boostCurve.Evaluate(1.0f / boostDuration);
+                boostLight2D.intensity = 1.0f + boostCurve.Evaluate(1.0f / boostDuration);
             }
             else
             {
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 _rb.velocity = transform.right * _boostSpeedCurrent;
 
                 boostLight2D.intensity =
-                    3.0f + boostCurve.Evaluate((1.0f / boostDuration) - (_boostTimeCurrent / boostDuration));
+                    1.0f + boostCurve.Evaluate((1.0f / boostDuration) - (_boostTimeCurrent / boostDuration));
 
                 _boostTimeCurrent += Time.deltaTime;
             }
