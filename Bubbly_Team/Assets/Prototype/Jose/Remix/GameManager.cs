@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitShop()
     {
+        Cursor.visible = false;
         SoundManager.Instance.ExitShop();
         StartCoroutine(UnloadShop());
     }
