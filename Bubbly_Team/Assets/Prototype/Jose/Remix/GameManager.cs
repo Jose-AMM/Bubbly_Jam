@@ -127,83 +127,83 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         BlackPanel.StartFadeOut();
         yield return new WaitForSeconds(BlackPanel.fadeDuration);
+        yield return new WaitForSeconds(0.1f);
         Debug.Log("Start dialogue");
 
         // STARTING DIALOGUE
         DialogueTrigger[] allDialogues;
         ChoicesTracker choicesTracker = GetComponent<ChoicesTracker>();
 
-        switch (InstantiatedShop.name)
+        if (InstantiatedShop.name.Contains("SHOP1"))
         {
-            case "SHOP1":
-                allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
-                foreach (DialogueTrigger t in allDialogues)
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (t.dialogue.dialogueIndex == 1)
                 {
-                    if (t.dialogue.dialogueIndex == 1)
-                    {
-                        t.TriggerDialogue();
-                    }
+                    t.TriggerDialogue();
                 }
-
-                break;
-            case "SHOP2":
-                allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
-                foreach (DialogueTrigger t in allDialogues)
-                {
-                    if (choicesTracker.FindChoiceOutput(1))
-                    {
-                        // trigger el 5
-                        if (t.dialogue.dialogueIndex == 5)
-                        {
-                            t.TriggerDialogue();
-                        }
-                    }
-                    else
-                    {
-                        // trigger el 6
-                        if (t.dialogue.dialogueIndex == 6)
-                        {
-                            t.TriggerDialogue();
-                        }
-                    }
-                }
-
-                break;
-            case "SHOP3":
-                allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
-                foreach (DialogueTrigger t in allDialogues)
-                {
-                    if (choicesTracker.FindChoiceOutput(5))
-                    {
-                        // trigger el 9
-                        if (t.dialogue.dialogueIndex == 9)
-                        {
-                            t.TriggerDialogue();
-                        }
-                    }
-                    else
-                    {
-                        // trigger el 10
-                        if (t.dialogue.dialogueIndex == 10)
-                        {
-                            t.TriggerDialogue();
-                        }
-                    }
-                }
-                break;
-            case "SHOP4":
-                allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
-                foreach (DialogueTrigger t in allDialogues)
-                {
-                    if (t.dialogue.dialogueIndex == 18)
-                    {
-                        t.TriggerDialogue();
-                    }
-                }
-                break;
-            default:
-                break;
+            }
         }
+        else if (InstantiatedShop.name.Contains("SHOP2"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (choicesTracker.FindChoiceOutput(1))
+                {
+                    // trigger el 5
+                    if (t.dialogue.dialogueIndex == 5)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+                else
+                {
+                    // trigger el 6
+                    if (t.dialogue.dialogueIndex == 6)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+            }
+        }
+        else if (InstantiatedShop.name.Contains("SHOP3"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (choicesTracker.FindChoiceOutput(5))
+                {
+                    // trigger el 9
+                    if (t.dialogue.dialogueIndex == 9)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+                else
+                {
+                    // trigger el 10
+                    if (t.dialogue.dialogueIndex == 10)
+                    {
+                        t.TriggerDialogue();
+                    }
+                }
+            }
+        }
+        else if (InstantiatedShop.name.Contains("SHOP4"))
+        {
+            allDialogues = GameObject.FindObjectsOfType<DialogueTrigger>();
+            foreach (DialogueTrigger t in allDialogues)
+            {
+                if (t.dialogue.dialogueIndex == 18)
+                {
+                    t.TriggerDialogue();
+                }
+            }
+        }
+
+
     }
 
     public IEnumerator UnloadShop()
