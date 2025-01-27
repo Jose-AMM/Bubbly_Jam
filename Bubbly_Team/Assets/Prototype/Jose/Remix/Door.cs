@@ -32,7 +32,7 @@ public class Door : MonoBehaviour
 
     private IEnumerator Recover()
     {
-        if (GameManager.Instance.HasExitedShop != true){
+        while (GameManager.Instance.HasExitedShop != true){
             yield return null;
         }
         yield return new WaitForSeconds(10.0f);
