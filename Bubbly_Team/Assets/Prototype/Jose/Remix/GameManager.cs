@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] checkpoints;
     [SerializeField] private int maxCheckpointsSize;
     [SerializeField] private int currentCheckpoint = 0;
+    private bool HasExitedShop = false;
 
     [SerializeField] private float[] oxygenByLevel;
 
@@ -422,5 +423,6 @@ public class GameManager : MonoBehaviour
         UpdateOxygenByLevel();
         RespawnPlayer();
         ExitShop();
+        HasExitedShop = true;
     }
 }
