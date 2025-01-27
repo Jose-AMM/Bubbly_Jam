@@ -32,8 +32,12 @@ public class Door : MonoBehaviour
 
     private IEnumerator Recover()
     {
-        yield return new WaitForSeconds(60.0f);
+        if (GameManager.Instance.HasExitedShop != true){
+            yield return null;
+        }
+        yield return new WaitForSeconds(10.0f);
         var collider = gameObject.GetComponent(typeof(Collider2D)) as Collider2D;
         collider.enabled = true;
+        GameManager.Instance.HasExitedShop = true;
     } 
 }
